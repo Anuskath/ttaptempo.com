@@ -1,0 +1,44 @@
+---
+import Layout from '../layouts/Layout.astro';
+import TapPad from '../components/TapPad.astro';
+import TempoReferenceGuide from '../components/TempoReferenceGuide.astro';
+---
+
+<Layout
+  title="BPM Counter & BPM Tapper - Free Online Tap Tempo | ttaptempo.com"
+  description="Free online BPM counter and bpm tapper. Tap your spacebar or touch screen to instantly calculate tempo tap speed and beats per minute for any song or audio."
+  keywords="bpm counter, bpm tapper, bpm tap, tempo tap, tap tempo bpm, bpm tap tempo, online tap tempo"
+  canonicalPath="/bpm-counter/"
+>
+  <div class="py-6 px-4 max-w-4xl mx-auto">
+    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-900 text-xs font-mono text-neutral-600 dark:text-neutral-400 mb-2">
+      <a href="/" class="hover:underline">Home</a>
+      <span>/</span>
+      <span>BPM Counter</span>
+    </div>
+  </div>
+
+  <TapPad />
+
+  <!-- Dedicated BPM Counter Guide -->
+  <section class="max-w-4xl mx-auto px-4 py-12 border-t border-neutral-200 dark:border-neutral-800">
+    <article class="prose prose-neutral dark:prose-invert max-w-none text-sm sm:text-base">
+      <h2 class="text-2xl font-bold text-neutral-900 dark:text-neutral-100 mb-4">
+        What is a BPM Counter &amp; BPM Tapper?
+      </h2>
+      <p>
+        A <strong>bpm counter</strong> (also referred to as a <strong>bpm tapper</strong> or <strong>tempo tap</strong> tool) is an essential device used to determine the exact speed of music in Beats Per Minute. DJs use it to organize music crates and beatmatch transitions seamlessly, while fitness instructors and runners use it to synchronize workout paces.
+      </p>
+      <h3 class="text-xl font-bold text-neutral-900 dark:text-neutral-100 mt-6 mb-3">
+        Why Use This Online BPM Tap Tool?
+      </h3>
+      <ul class="list-disc pl-6 space-y-2">
+        <li><strong>Sub-Millisecond Clock:</strong> Analyzes raw browser event timestamps without background lag.</li>
+        <li><strong>Rolling 16-Tap Average:</strong> Smooths out human tapping irregularities for studio-level precision.</li>
+        <li><strong>100% Free &amp; Private:</strong> No accounts, no data logging, runs entirely inside your device.</li>
+      </ul>
+    </article>
+  </section>
+
+  <TempoReferenceGuide />
+</Layout>
