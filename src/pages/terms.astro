@@ -1,0 +1,63 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+  title="Terms of Service - Tap Tempo | ttaptempo.com"
+  description="Terms of Service governing the use of ttaptempo.com's online tap tempo and metronome tools."
+  canonicalPath="/terms/"
+>
+  <div class="max-w-3xl mx-auto px-4 py-16">
+    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-900 text-xs font-mono text-neutral-600 dark:text-neutral-400 mb-4">
+      <span>Legal Agreement</span>
+    </div>
+    <h1 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-neutral-900 dark:text-neutral-100 mb-6">
+      Terms of Service
+    </h1>
+
+    <div class="prose prose-neutral dark:prose-invert max-w-none text-neutral-700 dark:text-neutral-300 leading-relaxed space-y-6 text-sm">
+      <p class="text-base text-neutral-600 dark:text-neutral-400">
+        Last updated: {new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
+      </p>
+
+      <p>
+        By accessing or using <strong>ttaptempo.com</strong>, you agree to be bound by these Terms of Service. If you do not agree to these terms, please do not use our website.
+      </p>
+
+      <h2 class="text-lg font-bold text-neutral-900 dark:text-neutral-100 mt-6 mb-2">1. Permitted Use</h2>
+      <p>
+        You are granted a free, non-exclusive, non-transferable license to use ttaptempo.com for personal, educational, commercial music production, and performance purposes. You may use the calculated tempos and delay values in your commercial recordings without attribution.
+      </p>
+
+      <h2 class="text-lg font-bold text-neutral-900 dark:text-neutral-100 mt-6 mb-2">2. Prohibited Conduct</h2>
+      <p>
+        You agree not to:
+      </p>
+      <ul class="list-disc pl-6 space-y-2">
+        <li>Attempt to disrupt, overload, or impair our web servers through automated scraping or denial-of-service attacks.</li>
+        <li>Frame, reverse engineer, or redistribute our proprietary client-side code without explicit written permission.</li>
+        <li>Circumvent or alter any security or access controls.</li>
+      </ul>
+
+      <h2 class="text-lg font-bold text-neutral-900 dark:text-neutral-100 mt-6 mb-2">3. Disclaimer of Warranties</h2>
+      <p>
+        The tools, calculations, and metronome audio signals provided on ttaptempo.com are provided on an "as is" and "as available" basis without warranties of any kind. While we strive for absolute mathematical precision, we do not warrant that calculations will be 100% error-free or uninterrupted across all hardware devices and operating systems.
+      </p>
+
+      <h2 class="text-lg font-bold text-neutral-900 dark:text-neutral-100 mt-6 mb-2">4. Limitation of Liability</h2>
+      <p>
+        In no event shall ttaptempo.com or its maintainers be liable for any indirect, incidental, or consequential damages resulting from the use or inability to use our tools during live performances or studio sessions.
+      </p>
+
+      <h2 class="text-lg font-bold text-neutral-900 dark:text-neutral-100 mt-6 mb-2">5. Changes to Terms</h2>
+      <p>
+        We reserve the right to modify these Terms of Service at any time. Continued use of the website following any changes constitutes acceptance of the new terms.
+      </p>
+
+      <h2 class="text-lg font-bold text-neutral-900 dark:text-neutral-100 mt-6 mb-2">6. Contact Information</h2>
+      <p>
+        For inquiries regarding these terms, please contact us at <a href="mailto:legal@ttaptempo.com" class="text-blue-600 dark:text-blue-400 underline">legal@ttaptempo.com</a>.
+      </p>
+    </div>
+  </div>
+</Layout>

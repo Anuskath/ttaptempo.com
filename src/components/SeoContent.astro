@@ -1,0 +1,152 @@
+---
+import { FAQS } from '../data/faqs';
+---
+
+<section id="faqs" class="relative w-full py-16 px-4 border-t border-neutral-200 dark:border-neutral-800">
+  <div class="max-w-4xl mx-auto">
+    
+    <!-- SEO Article Section (800+ Words) -->
+    <article class="prose prose-neutral dark:prose-invert max-w-none mb-16 text-neutral-700 dark:text-neutral-300 leading-relaxed">
+      
+      <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight text-neutral-900 dark:text-neutral-50 mb-6">
+        The Ultimate Guide to Tap Tempo &amp; BPM Measurement
+      </h2>
+
+      <p class="text-base sm:text-lg text-neutral-600 dark:text-neutral-400 mb-6">
+        Whether you are a music producer syncing delay pedals in a digital audio workstation (DAW), a DJ beatmatching two tracks during a live set, a guitarist practicing scales, or a runner tuning your stride cadence, knowing the exact <strong>Beats Per Minute (BPM)</strong> is essential. Our free <strong>online tap tempo tool</strong> enables you to calculate musical tempo instantaneously by tapping any key or touch screen with sub-millisecond precision.
+      </p>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 my-8 not-prose">
+        <div class="p-5 rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 shadow-xs">
+          <div class="w-8 h-8 rounded-lg bg-neutral-900 dark:bg-neutral-100 text-white dark:text-black flex items-center justify-center font-bold text-sm mb-3">1</div>
+          <h3 class="font-bold text-sm text-neutral-900 dark:text-neutral-100 mb-1">Sub-Millisecond Clock</h3>
+          <p class="text-xs text-neutral-500 dark:text-neutral-400">Uses high-precision browser timestamps (<code class="font-mono text-[11px]">performance.now()</code>) for laboratory accuracy.</p>
+        </div>
+
+        <div class="p-5 rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 shadow-xs">
+          <div class="w-8 h-8 rounded-lg bg-neutral-900 dark:bg-neutral-100 text-white dark:text-black flex items-center justify-center font-bold text-sm mb-3">2</div>
+          <h3 class="font-bold text-sm text-neutral-900 dark:text-neutral-100 mb-1">Zero-Latency Audio</h3>
+          <p class="text-xs text-neutral-500 dark:text-neutral-400">Pure synthesized Web Audio API metronome playback without loading external audio files.</p>
+        </div>
+
+        <div class="p-5 rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 shadow-xs">
+          <div class="w-8 h-8 rounded-lg bg-neutral-900 dark:bg-neutral-100 text-white dark:text-black flex items-center justify-center font-bold text-sm mb-3">3</div>
+          <h3 class="font-bold text-sm text-neutral-900 dark:text-neutral-100 mb-1">DAW Time Sync</h3>
+          <p class="text-xs text-neutral-500 dark:text-neutral-400">Live millisecond conversions for 1/4, 1/8, 1/16, triplet, and dotted notes with 1-click copy.</p>
+        </div>
+      </div>
+
+      <h3 class="text-xl sm:text-2xl font-bold text-neutral-900 dark:text-neutral-100 mt-8 mb-4">
+        How Does a Tap Tempo Calculator Work?
+      </h3>
+      <p>
+        When you tap along to a rhythm, the tap tempo algorithm records the exact epoch timestamp of each tap. The mathematical interval between consecutive taps is measured in milliseconds (<span class="font-mono text-sm">ms</span>). Because human tapping naturally contains micro-variations (jitter), our smart tap tempo engine computes a rolling weighted average of your most recent 16 taps. 
+      </p>
+      <p>
+        The mathematical formula used to convert interval duration into Beats Per Minute is:
+      </p>
+      
+      <div class="p-4 my-4 rounded-xl border border-neutral-200 dark:border-neutral-800 bg-neutral-100/60 dark:bg-neutral-900/60 font-mono text-xs sm:text-sm text-center not-prose">
+        <span class="text-blue-600 dark:text-blue-400 font-bold">BPM</span> = 60,000 / Average Interval (ms)
+      </div>
+
+      <p>
+        For instance, if the average time between your taps is <strong>500 milliseconds</strong>, the tempo calculation is:
+        <br />
+        <code class="font-mono text-xs">60,000 / 500 = 120 BPM</code> (the classic tempo of House music and standard disco). If the interval between taps is <strong>750 milliseconds</strong>, the resulting tempo is <code class="font-mono text-xs">60,000 / 750 = 80 BPM</code> (typical of downtempo Hip-Hop and Lo-Fi beats).
+      </p>
+
+      <h3 class="text-xl sm:text-2xl font-bold text-neutral-900 dark:text-neutral-100 mt-8 mb-4">
+        Converting BPM to Delay and Reverb Time (Milliseconds)
+      </h3>
+      <p>
+        In modern music production, setting audio effect plugins (such as stereo delay, ping-pong echo, chorus rate, and reverb pre-delay) to free-running milliseconds can create muddy mixes. By calculating exact musical sub-divisions in milliseconds, you ensure every echo repeat sits tightly in the pocket of the groove:
+      </p>
+
+      <ul class="list-disc pl-6 space-y-2">
+        <li><strong>Quarter Note (1/4 Note):</strong> <code class="font-mono text-xs">60,000 / BPM</code></li>
+        <li><strong>Eighth Note (1/8 Note):</strong> <code class="font-mono text-xs">30,000 / BPM</code></li>
+        <li><strong>Sixteenth Note (1/16 Note):</strong> <code class="font-mono text-xs">15,000 / BPM</code></li>
+        <li><strong>Dotted Notes:</strong> Multiply standard note duration by <strong>1.5</strong></li>
+        <li><strong>Triplet Notes:</strong> Multiply standard note duration by <strong>2/3 (0.6667)</strong></li>
+      </ul>
+
+      <h3 class="text-xl sm:text-2xl font-bold text-neutral-900 dark:text-neutral-100 mt-8 mb-4">
+        Tips for Achieving 100% Tapping Accuracy
+      </h3>
+      <p>
+        To get the most accurate BPM reading on any track:
+      </p>
+      <ol class="list-decimal pl-6 space-y-2">
+        <li><strong>Listen for the Snare or Clave:</strong> In 4/4 pop and rock music, the snare drum almost always hits on beats 2 and 4. In electronic dance music, the kick drum typically pounds on all four quarter notes (four-on-the-floor). Focus your tapping on the primary quarter-note pulse.</li>
+        <li><strong>Tap for at least 6 to 10 beats:</strong> Tapping only twice can give an estimate, but human finger latency varies by 10 to 30ms. Tapping 8 to 12 consecutive times allows the algorithm to filter out outliers and hone in on the true studio master clock tempo.</li>
+        <li><strong>Use Physical Keyboard or Haptic Screen:</strong> On computers, the Spacebar provides the most comfortable tactile response. On mobile devices, ensure haptic feedback is active so your finger feels each register.</li>
+      </ol>
+
+    </article>
+
+    <!-- Frequently Asked Questions Accordion -->
+    <div class="mt-12 pt-12 border-t border-neutral-200 dark:border-neutral-800">
+      <div class="text-center mb-10">
+        <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight text-neutral-900 dark:text-neutral-100">
+          Frequently Asked Questions
+        </h2>
+        <p class="text-sm text-neutral-600 dark:text-neutral-400 mt-1">
+          Everything you need to know about measuring tempo, BPM calculation, and metronome practice.
+        </p>
+      </div>
+
+      <div class="space-y-3 max-w-3xl mx-auto">
+        {FAQS.map((faq, index) => (
+          <details class="group rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 p-4 sm:p-5 transition-colors open:bg-neutral-50/50 dark:open:bg-neutral-900/80">
+            <summary class="flex items-center justify-between cursor-pointer list-none font-semibold text-sm sm:text-base text-neutral-900 dark:text-neutral-100 select-none">
+              <span>{faq.question}</span>
+              <span class="ml-4 transition-transform duration-200 group-open:rotate-180 text-neutral-400 shrink-0">
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </span>
+            </summary>
+            <div class="mt-3 text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed border-t border-neutral-100 dark:border-neutral-800/80 pt-3">
+              {faq.answer}
+            </div>
+          </details>
+        ))}
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- JSON-LD FAQPage & WebApplication Schema for Google Rich Snippets -->
+<script type="application/ld+json" set:html={JSON.stringify({
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "@id": "https://ttaptempo.com/#webapp",
+      "name": "Tap Tempo - Online BPM Counter & Metronome",
+      "url": "https://ttaptempo.com/",
+      "applicationCategory": "MusicApplication",
+      "operatingSystem": "All (Web Browser, iOS, Android, macOS, Windows, Linux)",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "description": "Free online tap tempo and BPM counter tool. Measure beats per minute by tapping any key, listen with zero-latency synthesized metronome, and calculate delay/reverb sync times in milliseconds."
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://ttaptempo.com/#faq",
+      "mainEntity": FAQS.map(f => ({
+        "@type": "Question",
+        "name": f.question,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": f.answer
+        }
+      }))
+    }
+  ]
+})} />

@@ -1,11 +1,20 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import TapPad from '../components/TapPad.astro';
+import AudioMetronome from '../components/AudioMetronome.astro';
+import DelayCalculator from '../components/DelayCalculator.astro';
+import TempoReferenceGuide from '../components/TempoReferenceGuide.astro';
+import SeoContent from '../components/SeoContent.astro';
 ---
 
-<Layout>
-	<Welcome />
+<Layout
+  title="Tap Tempo - Free Online BPM Counter & Metronome | ttaptempo.com"
+  description="Accurate online tap tempo and BPM counter. Tap any key to calculate exact beats per minute, play synthesized metronome beats, and sync delay times in milliseconds."
+  canonicalPath="/"
+>
+  <TapPad />
+  <AudioMetronome />
+  <DelayCalculator />
+  <TempoReferenceGuide />
+  <SeoContent />
 </Layout>

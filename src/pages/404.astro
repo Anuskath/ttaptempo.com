@@ -1,0 +1,41 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+  title="404 Page Not Found - Tap Tempo | ttaptempo.com"
+  description="The page you are looking for does not exist on ttaptempo.com. Return to our free online tap tempo and metronome tool."
+  canonicalPath="/404/"
+>
+  <div class="max-w-2xl mx-auto px-4 py-24 text-center">
+    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-neutral-200 dark:border-neutral-800 bg-neutral-100 dark:bg-neutral-900 text-xs font-mono font-medium text-neutral-600 dark:text-neutral-400 mb-6">
+      <span>404 • Out of Tempo</span>
+    </div>
+    
+    <div class="font-mono text-8xl sm:text-9xl font-black text-neutral-900 dark:text-neutral-50 mb-4 tracking-tighter">
+      404
+    </div>
+    
+    <h1 class="text-2xl sm:text-3xl font-bold text-neutral-900 dark:text-neutral-100 mb-3">
+      Beat Not Found
+    </h1>
+    <p class="text-neutral-600 dark:text-neutral-400 mb-8 max-w-md mx-auto text-sm sm:text-base">
+      The page you requested might have been moved, renamed, or is temporarily out of sync. Return to the main tap tempo tool to keep the rhythm going.
+    </p>
+
+    <div class="flex items-center justify-center gap-4">
+      <a 
+        href="/" 
+        class="px-6 py-3 rounded-xl bg-neutral-900 dark:bg-neutral-100 text-white dark:text-black font-semibold text-sm hover:bg-neutral-800 dark:hover:bg-neutral-200 transition-colors shadow-sm"
+      >
+        Go to Tap Tempo Tool
+      </a>
+      <a 
+        href="/#metronome" 
+        class="px-6 py-3 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-900 text-neutral-800 dark:text-neutral-200 font-semibold text-sm hover:bg-neutral-50 dark:hover:bg-neutral-800 transition-colors"
+      >
+        Open Metronome
+      </a>
+    </div>
+  </div>
+</Layout>

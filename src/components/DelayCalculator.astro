@@ -1,0 +1,166 @@
+---
+---
+
+<section id="delay-table" class="relative w-full py-12 px-4 border-t border-neutral-200 dark:border-neutral-800">
+  <div class="max-w-4xl mx-auto">
+    
+    <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-6">
+      <div>
+        <div class="inline-flex items-center gap-2 px-2.5 py-0.5 rounded-full border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 text-xs font-mono font-medium text-neutral-600 dark:text-neutral-400 mb-2">
+          <span>DAW &amp; Studio Sync</span>
+          <span>•</span>
+          <span>FL Studio / Ableton / Logic</span>
+        </div>
+        <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-neutral-900 dark:text-neutral-100">
+          Delay &amp; Reverb Time Calculator (ms)
+        </h2>
+        <p class="text-sm text-neutral-600 dark:text-neutral-400 mt-1">
+          Synchronize your audio plugin pre-delays, echoes, and LFO modulation times to the exact tempo. Click any value to copy.
+        </p>
+      </div>
+
+      <!-- Current Sync BPM Readout -->
+      <div class="flex items-center gap-2 text-xs font-mono px-3 py-1.5 rounded-lg border border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-950">
+        <span class="text-neutral-500">Syncing at:</span>
+        <span id="delay-sync-bpm" class="font-bold text-neutral-900 dark:text-neutral-100">120 BPM</span>
+      </div>
+    </div>
+
+    <!-- Table Container -->
+    <div class="rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950 overflow-hidden shadow-sm">
+      <div class="overflow-x-auto">
+        <table class="w-full text-left border-collapse text-xs sm:text-sm">
+          <thead>
+            <tr class="border-b border-neutral-200 dark:border-neutral-800 bg-neutral-50/70 dark:bg-neutral-900/50 text-neutral-600 dark:text-neutral-400 font-semibold">
+              <th class="py-3 px-4 sm:px-6">Note Value</th>
+              <th class="py-3 px-4 sm:px-6">Normal (ms)</th>
+              <th class="py-3 px-4 sm:px-6">Dotted (ms)</th>
+              <th class="py-3 px-4 sm:px-6">Triplet (ms)</th>
+              <th class="py-3 px-4 sm:px-6">Frequency (Hz)</th>
+            </tr>
+          </thead>
+          <tbody id="delay-tbody" class="divide-y divide-neutral-100 dark:divide-neutral-900 font-mono text-neutral-800 dark:text-neutral-200">
+            <!-- Dynamically populated via JS for reactive BPM updates -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Toast Notification when copied -->
+    <div id="copy-toast" class="fixed bottom-6 right-6 z-50 pointer-events-none transform translate-y-8 opacity-0 transition-all duration-200 px-4 py-2 rounded-xl bg-neutral-950 dark:bg-white text-white dark:text-neutral-950 text-xs font-mono font-medium shadow-2xl flex items-center gap-2">
+      <svg class="w-4 h-4 text-emerald-400 dark:text-emerald-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="20 6 9 17 4 12"></polyline>
+      </svg>
+      <span id="toast-message">Copied to clipboard!</span>
+    </div>
+
+  </div>
+</section>
+
+<script>
+  interface NoteDef {
+    name: string;
+    factor: number; // relative to quarter note (1/4 = 1.0)
+  }
+
+  const NOTES: NoteDef[] = [
+    { name: '1/1 (Whole Note)', factor: 4.0 },
+    { name: '1/2 (Half Note)', factor: 2.0 },
+    { name: '1/4 (Quarter Note)', factor: 1.0 },
+    { name: '1/8 (Eighth Note)', factor: 0.5 },
+    { name: '1/16 (Sixteenth Note)', factor: 0.25 },
+    { name: '1/32 (Thirty-second Note)', factor: 0.125 },
+    { name: '1/64 (Sixty-fourth Note)', factor: 0.0625 },
+  ];
+
+  let currentBpm = 120;
+  const tbody = document.getElementById('delay-tbody') as HTMLElement;
+  const syncBpmText = document.getElementById('delay-sync-bpm') as HTMLElement;
+  const copyToast = document.getElementById('copy-toast') as HTMLElement;
+  const toastMessage = document.getElementById('toast-message') as HTMLElement;
+
+  function copyToClipboard(text: string, label: string) {
+    navigator.clipboard.writeText(text).then(() => {
+      toastMessage.textContent = `Copied ${text} ms (${label})`;
+      copyToast.classList.remove('opacity-0', 'translate-y-8');
+      copyToast.classList.add('opacity-100', 'translate-y-0');
+      setTimeout(() => {
+        copyToast.classList.remove('opacity-100', 'translate-y-0');
+        copyToast.classList.add('opacity-0', 'translate-y-8');
+      }, 1500);
+    });
+  }
+
+  function renderTable(bpm: number) {
+    currentBpm = Math.max(1, bpm || 120);
+    syncBpmText.textContent = `${Math.round(currentBpm)} BPM`;
+
+    const quarterMs = 60000 / currentBpm;
+
+    tbody.innerHTML = '';
+
+    NOTES.forEach(note => {
+      const normalMs = (quarterMs * note.factor).toFixed(1);
+      const dottedMs = (quarterMs * note.factor * 1.5).toFixed(1);
+      const tripletMs = (quarterMs * note.factor * (2 / 3)).toFixed(1);
+      const hz = (1000 / (quarterMs * note.factor)).toFixed(2);
+
+      const tr = document.createElement('tr');
+      tr.className = 'hover:bg-neutral-50 dark:hover:bg-neutral-900/40 transition-colors';
+
+      tr.innerHTML = `
+        <td class="py-3 px-4 sm:px-6 font-sans font-medium text-neutral-900 dark:text-neutral-100">
+          ${note.name}
+        </td>
+        <td class="py-3 px-4 sm:px-6">
+          <button type="button" class="copy-cell group inline-flex items-center gap-1.5 px-2 py-1 rounded hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors cursor-pointer" data-val="${normalMs}" data-label="${note.name} Normal">
+            <span>${normalMs}</span>
+            <span class="text-[10px] text-neutral-400 opacity-0 group-hover:opacity-100">copy</span>
+          </button>
+        </td>
+        <td class="py-3 px-4 sm:px-6">
+          <button type="button" class="copy-cell group inline-flex items-center gap-1.5 px-2 py-1 rounded hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors cursor-pointer" data-val="${dottedMs}" data-label="${note.name} Dotted">
+            <span>${dottedMs}</span>
+            <span class="text-[10px] text-neutral-400 opacity-0 group-hover:opacity-100">copy</span>
+          </button>
+        </td>
+        <td class="py-3 px-4 sm:px-6">
+          <button type="button" class="copy-cell group inline-flex items-center gap-1.5 px-2 py-1 rounded hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors cursor-pointer" data-val="${tripletMs}" data-label="${note.name} Triplet">
+            <span>${tripletMs}</span>
+            <span class="text-[10px] text-neutral-400 opacity-0 group-hover:opacity-100">copy</span>
+          </button>
+        </td>
+        <td class="py-3 px-4 sm:px-6 text-neutral-500">
+          ${hz} Hz
+        </td>
+      `;
+
+      tbody.appendChild(tr);
+    });
+
+    // Attach copy listeners
+    document.querySelectorAll('.copy-cell').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const val = btn.getAttribute('data-val') || '';
+        const label = btn.getAttribute('data-label') || '';
+        copyToClipboard(val, label);
+      });
+    });
+  }
+
+  // Initial render at default 120 BPM
+  renderTable(120);
+
+  // Listen to BPM updates from Tap Pad or Metronome
+  window.addEventListener('bpm-change', ((e: CustomEvent) => {
+    if (e.detail.bpm > 0) {
+      renderTable(e.detail.bpm);
+    }
+  }) as EventListener);
+
+  window.addEventListener('set-manual-bpm', ((e: CustomEvent) => {
+    if (e.detail.bpm > 0) {
+      renderTable(e.detail.bpm);
+    }
+  }) as EventListener);
+</script>

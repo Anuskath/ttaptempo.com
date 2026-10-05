@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+# Disallow internal error pages
+Disallow: /404/
+Disallow: /404.html
+
+# Sitemaps
+Sitemap: https://ttaptempo.com/sitemap-index.xml

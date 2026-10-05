@@ -1,0 +1,68 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+  title="Privacy Policy - Tap Tempo | ttaptempo.com"
+  description="Privacy Policy for ttaptempo.com. We do not store, track, or share your personal audio or usage data."
+  canonicalPath="/privacy-policy/"
+>
+  <div class="max-w-3xl mx-auto px-4 py-16">
+    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-900 text-xs font-mono text-neutral-600 dark:text-neutral-400 mb-4">
+      <span>Data Protection</span>
+    </div>
+    <h1 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-neutral-900 dark:text-neutral-100 mb-6">
+      Privacy Policy
+    </h1>
+
+    <div class="prose prose-neutral dark:prose-invert max-w-none text-neutral-700 dark:text-neutral-300 leading-relaxed space-y-6 text-sm">
+      <p class="text-base text-neutral-600 dark:text-neutral-400">
+        Last updated: {new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
+      </p>
+
+      <p>
+        At <strong>ttaptempo.com</strong>, we are committed to respecting and protecting your privacy. This Privacy Policy explains our practices regarding data collection, client-side processing, and third-party advertising.
+      </p>
+
+      <h2 class="text-lg font-bold text-neutral-900 dark:text-neutral-100 mt-6 mb-2">1. No Personal Data Collection</h2>
+      <p>
+        We do not require user accounts, email addresses, phone numbers, or passwords to access our tap tempo tool, interactive metronome, or delay calculators. You can use all features completely anonymously without signing up.
+      </p>
+
+      <h2 class="text-lg font-bold text-neutral-900 dark:text-neutral-100 mt-6 mb-2">2. Client-Side Audio and Calculation Execution</h2>
+      <p>
+        All mathematical calculations (such as calculating the millisecond intervals between your taps and computing BPM rolling averages) and Web Audio sound synthesis occur <strong>strictly inside your local web browser</strong>. No audio signals, microphone recordings, or tap timestamps are ever recorded or transmitted to our servers.
+      </p>
+
+      <h2 class="text-lg font-bold text-neutral-900 dark:text-neutral-100 mt-6 mb-2">3. Local Storage</h2>
+      <p>
+        We use the browser's native <code class="font-mono text-xs">localStorage</code> solely to save your local UI preferences (such as your chosen Dark/Light theme mode). This data remains on your physical device and is never shared with third parties.
+      </p>
+
+      <h2 class="text-lg font-bold text-neutral-900 dark:text-neutral-100 mt-6 mb-2">4. Third-Party Advertising &amp; Google AdSense</h2>
+      <p>
+        We may display non-intrusive advertisements served by third-party ad networks such as Google AdSense to fund our hosting and ongoing development.
+      </p>
+      <ul class="list-disc pl-6 space-y-2">
+        <li>Third-party vendors, including Google, use cookies to serve ads based on a user's prior visits to this website or other websites.</li>
+        <li>Google's use of advertising cookies enables it and its partners to serve ads to users based on their visit to our site and/or other sites on the Internet.</li>
+        <li>Users may opt out of personalized advertising by visiting <a href="https://www.google.com/settings/ads" target="_blank" rel="noopener noreferrer" class="text-blue-600 dark:text-blue-400 underline">Google Ads Settings</a> or <a href="https://www.aboutads.info" target="_blank" rel="noopener noreferrer" class="text-blue-600 dark:text-blue-400 underline">aboutads.info</a>.</li>
+      </ul>
+
+      <h2 class="text-lg font-bold text-neutral-900 dark:text-neutral-100 mt-6 mb-2">5. GDPR &amp; CCPA Compliance</h2>
+      <p>
+        In compliance with the General Data Protection Regulation (GDPR) and the California Consumer Privacy Act (CCPA), we respect your right to privacy. Because we do not collect or store personal identity data, we do not sell or monetize personal information.
+      </p>
+
+      <h2 class="text-lg font-bold text-neutral-900 dark:text-neutral-100 mt-6 mb-2">6. Children's Privacy (COPPA)</h2>
+      <p>
+        Our tools are safe for educational use by students of all ages. We do not knowingly collect any personally identifiable information from children under 13.
+      </p>
+
+      <h2 class="text-lg font-bold text-neutral-900 dark:text-neutral-100 mt-6 mb-2">7. Contact Us</h2>
+      <p>
+        If you have questions regarding this Privacy Policy, you may contact us at <a href="mailto:privacy@ttaptempo.com" class="text-blue-600 dark:text-blue-400 underline">privacy@ttaptempo.com</a>.
+      </p>
+    </div>
+  </div>
+</Layout>

@@ -1,0 +1,102 @@
+---
+---
+
+<header class="sticky top-0 z-50 w-full border-b border-neutral-200 dark:border-neutral-800 bg-white/80 dark:bg-black/80 backdrop-blur-md transition-colors duration-200">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+    <!-- Brand / Logo -->
+    <a href="/" class="flex items-center gap-2.5 group">
+      <div class="w-9 h-9 rounded-lg bg-neutral-900 dark:bg-neutral-100 flex items-center justify-center text-white dark:text-black shadow-sm group-hover:scale-105 transition-transform duration-200">
+        <!-- Modern Sound Wave / Metronome Icon -->
+        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M2 10v4"></path>
+          <path d="M6 7v10"></path>
+          <path d="M10 4v16"></path>
+          <path d="M14 8v8"></path>
+          <path d="M18 6v12"></path>
+          <path d="M22 10v4"></path>
+        </svg>
+      </div>
+      <div class="flex flex-col">
+        <div class="flex items-center gap-1.5">
+          <span class="font-bold text-lg tracking-tight text-neutral-900 dark:text-neutral-50">Tap Tempo</span>
+          <span class="text-xs px-1.5 py-0.5 rounded bg-neutral-100 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-400 font-mono font-medium">.com</span>
+        </div>
+      </div>
+    </a>
+
+    <!-- Nav Links (Desktop) -->
+    <nav class="hidden md:flex items-center gap-6 text-sm font-medium text-neutral-600 dark:text-neutral-400">
+      <a href="#tap-tool" class="hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors">Tap Tool</a>
+      <a href="#metronome" class="hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors">Metronome</a>
+      <a href="#delay-table" class="hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors">Delay & Reverb Sync</a>
+      <a href="#tempo-guide" class="hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors">Tempo Guide</a>
+      <a href="#faqs" class="hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors">FAQs</a>
+    </nav>
+
+    <!-- Right Controls: Free Badge & Theme Toggle -->
+    <div class="flex items-center gap-3">
+      <span class="hidden sm:inline-flex items-center gap-1.5 text-xs font-medium px-2.5 py-1 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20">
+        <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+        100% Free • No Sign-in
+      </span>
+
+      <!-- Dark Mode Toggle Button -->
+      <button 
+        id="theme-toggle" 
+        type="button" 
+        aria-label="Toggle dark mode"
+        class="w-9 h-9 rounded-lg border border-neutral-200 dark:border-neutral-800 flex items-center justify-center text-neutral-700 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-neutral-900 transition-colors cursor-pointer"
+      >
+        <!-- Sun Icon (shows in dark mode) -->
+        <svg id="theme-sun" class="w-4 h-4 hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="5"></circle>
+          <line x1="12" y1="1" x2="12" y2="3"></line>
+          <line x1="12" y1="21" x2="12" y2="23"></line>
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+          <line x1="1" y1="12" x2="3" y2="12"></line>
+          <line x1="21" y1="12" x2="23" y2="12"></line>
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+        </svg>
+        <!-- Moon Icon (shows in light mode) -->
+        <svg id="theme-moon" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+        </svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<script is:inline>
+  const themeToggle = document.getElementById('theme-toggle');
+  const themeSun = document.getElementById('theme-sun');
+  const themeMoon = document.getElementById('theme-moon');
+
+  function updateThemeUI(isDark) {
+    if (isDark) {
+      document.documentElement.classList.add('dark');
+      themeSun.classList.remove('hidden');
+      themeMoon.classList.add('hidden');
+    } else {
+      document.documentElement.classList.remove('dark');
+      themeSun.classList.add('hidden');
+      themeMoon.classList.remove('hidden');
+    }
+  }
+
+  // Initial check
+  const savedTheme = localStorage.getItem('theme');
+  const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const isDark = savedTheme ? savedTheme === 'dark' : systemPrefersDark;
+  updateThemeUI(isDark);
+
+  if (themeToggle) {
+    themeToggle.addEventListener('click', () => {
+      const willBeDark = !document.documentElement.classList.contains('dark');
+      localStorage.setItem('theme', willBeDark ? 'dark' : 'light');
+      updateThemeUI(willBeDark);
+      window.dispatchEvent(new CustomEvent('theme-change', { detail: { dark: willBeDark } }));
+    });
+  }
+</script>
