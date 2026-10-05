@@ -190,29 +190,51 @@ import { FAQS } from '../data/faqs';
     </article>
 
     <!-- Frequently Asked Questions Accordion -->
-    <div class="mt-16 pt-12 border-t border-neutral-200 dark:border-neutral-800">
+    <div id="faq" class="mt-16 pt-12 border-t border-neutral-200 dark:border-neutral-800 scroll-mt-20">
       <div class="text-center mb-10">
+        <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-900 text-xs font-medium text-neutral-600 dark:text-neutral-400 mb-3">
+          <svg class="w-3.5 h-3.5 text-emerald-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+            <line x1="12" y1="17" x2="12.01" y2="17"></line>
+          </svg>
+          <span>Frequently Asked Questions</span>
+        </div>
         <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight text-neutral-900 dark:text-neutral-100">
-          Frequently Asked Questions
+          Everything You Need to Know About Tap Tempo &amp; BPM
         </h2>
-        <p class="text-sm text-neutral-600 dark:text-neutral-400 mt-1">
-          Everything you need to know about measuring tempo, BPM calculation, and metronome practice.
+        <p class="text-sm text-neutral-600 dark:text-neutral-400 mt-2 max-w-xl mx-auto">
+          In-depth technical answers regarding tempo calculation, classical Italian markings, delay pedal synchronization, and digital audio workstation workflows.
         </p>
       </div>
 
       <div class="space-y-3 max-w-3xl mx-auto">
-        {FAQS.map((faq) => (
-          <details class="group rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 p-4 sm:p-5 transition-colors open:bg-neutral-50/50 dark:open:bg-neutral-900/80">
-            <summary class="flex items-center justify-between cursor-pointer list-none font-semibold text-sm sm:text-base text-neutral-900 dark:text-neutral-100 select-none">
-              <span>{faq.question}</span>
-              <span class="ml-4 transition-transform duration-200 group-open:rotate-180 text-neutral-400 shrink-0">
+        {FAQS.map((faq, index) => (
+          <details class="group rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 p-4 sm:p-5 transition-all duration-200 hover:border-neutral-300 dark:hover:border-neutral-700 open:bg-neutral-50/70 dark:open:bg-neutral-900/90 open:border-neutral-300 dark:open:border-neutral-700">
+            <summary class="flex items-start sm:items-center justify-between cursor-pointer list-none select-none min-h-[44px]">
+              <div class="flex items-start sm:items-center gap-3 pr-2">
+                <span class="inline-flex items-center justify-center w-6 h-6 rounded-full text-xs font-mono font-medium text-neutral-400 dark:text-neutral-500 bg-neutral-100 dark:bg-neutral-800 shrink-0 mt-0.5 sm:mt-0">
+                  {index + 1}
+                </span>
+                <div>
+                  {faq.category && (
+                    <span class="inline-block text-[10px] font-mono uppercase tracking-wider text-emerald-600 dark:text-emerald-400 font-semibold mb-0.5">
+                      {faq.category}
+                    </span>
+                  )}
+                  <h3 class="font-semibold text-sm sm:text-base text-neutral-900 dark:text-neutral-100 leading-snug">
+                    {faq.question}
+                  </h3>
+                </div>
+              </div>
+              <span class="ml-2 transition-transform duration-200 group-open:rotate-180 text-neutral-400 dark:text-neutral-500 shrink-0 p-1">
                 <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                   <polyline points="6 9 12 15 18 9"></polyline>
                 </svg>
               </span>
             </summary>
-            <div class="mt-3 text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed border-t border-neutral-100 dark:border-neutral-800/80 pt-3">
-              {faq.answer}
+            <div class="mt-3.5 text-xs sm:text-sm text-neutral-600 dark:text-neutral-300 leading-relaxed border-t border-neutral-100 dark:border-neutral-800/80 pt-3.5 pl-9 sm:pl-9 break-words">
+              <p>{faq.answer}</p>
             </div>
           </details>
         ))}
@@ -222,35 +244,33 @@ import { FAQS } from '../data/faqs';
   </div>
 </section>
 
-<!-- JSON-LD FAQPage & WebApplication Schema for Google Rich Snippets -->
+<!-- JSON-LD WebApplication Schema for Google Rich Snippets -->
 <script type="application/ld+json" set:html={JSON.stringify({
   "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "WebApplication",
-      "@id": "https://ttaptempo.com/#webapp",
-      "name": "Tap Tempo - Online BPM Counter & Metronome",
-      "url": "https://ttaptempo.com/",
-      "applicationCategory": "MusicApplication",
-      "operatingSystem": "All (Web Browser, iOS, Android, macOS, Windows, Linux)",
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "USD"
-      },
-      "description": "Free online tap tempo and BPM counter tool. Measure beats per minute by tapping any key, listen with zero-latency synthesized metronome, and calculate delay/reverb sync times in milliseconds."
-    },
-    {
-      "@type": "FAQPage",
-      "@id": "https://ttaptempo.com/#faq",
-      "mainEntity": FAQS.map(f => ({
-        "@type": "Question",
-        "name": f.question,
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": f.answer
-        }
-      }))
+  "@type": "WebApplication",
+  "@id": "https://ttaptempo.com/#webapp",
+  "name": "Tap Tempo - Online BPM Counter & Metronome",
+  "url": "https://ttaptempo.com/",
+  "applicationCategory": "MusicApplication",
+  "operatingSystem": "All (Web Browser, iOS, Android, macOS, Windows, Linux)",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "description": "Free online tap tempo and BPM counter tool. Measure beats per minute by tapping any key, listen with zero-latency synthesized metronome, and calculate delay/reverb sync times in milliseconds."
+})} />
+
+<!-- Dedicated JSON-LD FAQPage Schema for Google SERP Rich Snippets Accordions -->
+<script type="application/ld+json" set:html={JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": FAQS.map(faq => ({
+    "@type": "Question",
+    "name": faq.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": `<p>${faq.answer}</p>`
     }
-  ]
+  }))
 })} />

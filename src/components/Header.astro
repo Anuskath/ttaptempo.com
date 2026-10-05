@@ -31,14 +31,14 @@
       <a href="/online-metronome/" class="hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors">Metronome</a>
       <a href="/delay-calculator/" class="hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors">Delay &amp; Reverb Sync</a>
       <a href="/#tempo-guide" class="hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors">Tempo Guide</a>
-      <a href="/#faqs" class="hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors">FAQs</a>
+      <a href="/#faq" class="hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors">FAQs</a>
     </nav>
 
-    <!-- Right Controls: Free Badge & Theme Toggle -->
-    <div class="flex items-center gap-3">
+    <!-- Right Controls: Free Badge, Theme Toggle & Mobile Menu -->
+    <div class="flex items-center gap-2 sm:gap-3">
       <span class="hidden sm:inline-flex items-center gap-1.5 text-xs font-medium px-2.5 py-1 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20">
         <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
-        100% Free • No Sign-in
+        100% Free
       </span>
 
       <!-- Dark Mode Toggle Button -->
@@ -65,7 +65,52 @@
           <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
         </svg>
       </button>
+
+      <!-- Mobile Hamburger Button -->
+      <button
+        id="mobile-menu-btn"
+        type="button"
+        aria-label="Open mobile navigation menu"
+        class="md:hidden w-9 h-9 rounded-lg border border-neutral-200 dark:border-neutral-800 flex items-center justify-center text-neutral-700 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-neutral-900 transition-colors cursor-pointer"
+      >
+        <svg id="hamburger-icon" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+        <svg id="close-icon" class="w-5 h-5 hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
     </div>
+  </div>
+
+  <!-- Mobile Dropdown Navigation -->
+  <div id="mobile-menu" class="hidden md:hidden border-t border-neutral-200 dark:border-neutral-800 bg-white/95 dark:bg-black/95 backdrop-blur-lg px-4 py-4 space-y-2">
+    <a href="/" class="flex items-center justify-between py-2 px-3 rounded-lg text-sm font-medium text-neutral-800 dark:text-neutral-200 hover:bg-neutral-100 dark:hover:bg-neutral-900 transition-colors">
+      <span>Tap Tempo Tool</span>
+      <span class="text-xs text-neutral-400">Home</span>
+    </a>
+    <a href="/bpm-counter/" class="flex items-center justify-between py-2 px-3 rounded-lg text-sm font-medium text-neutral-800 dark:text-neutral-200 hover:bg-neutral-100 dark:hover:bg-neutral-900 transition-colors">
+      <span>BPM Counter &amp; Tapper</span>
+      <span class="text-xs text-emerald-500 font-mono">BPM</span>
+    </a>
+    <a href="/online-metronome/" class="flex items-center justify-between py-2 px-3 rounded-lg text-sm font-medium text-neutral-800 dark:text-neutral-200 hover:bg-neutral-100 dark:hover:bg-neutral-900 transition-colors">
+      <span>Online Metronome</span>
+      <span class="text-xs text-blue-500 font-mono">Click</span>
+    </a>
+    <a href="/delay-calculator/" class="flex items-center justify-between py-2 px-3 rounded-lg text-sm font-medium text-neutral-800 dark:text-neutral-200 hover:bg-neutral-100 dark:hover:bg-neutral-900 transition-colors">
+      <span>Delay &amp; Reverb Sync</span>
+      <span class="text-xs text-purple-500 font-mono">ms</span>
+    </a>
+    <a href="/#tempo-guide" class="flex items-center justify-between py-2 px-3 rounded-lg text-sm font-medium text-neutral-800 dark:text-neutral-200 hover:bg-neutral-100 dark:hover:bg-neutral-900 transition-colors">
+      <span>Tempo Markings Guide</span>
+    </a>
+    <a href="/#faq" class="flex items-center justify-between py-2 px-3 rounded-lg text-sm font-medium text-neutral-800 dark:text-neutral-200 hover:bg-neutral-100 dark:hover:bg-neutral-900 transition-colors">
+      <span>15 SEO FAQs</span>
+      <span class="text-xs px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-500 font-mono">Q&amp;A</span>
+    </a>
   </div>
 </header>
 
@@ -98,6 +143,35 @@
       localStorage.setItem('theme', willBeDark ? 'dark' : 'light');
       updateThemeUI(willBeDark);
       window.dispatchEvent(new CustomEvent('theme-change', { detail: { dark: willBeDark } }));
+    });
+  }
+
+  // Mobile Navigation Menu Toggle
+  const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const hamburgerIcon = document.getElementById('hamburger-icon');
+  const closeIcon = document.getElementById('close-icon');
+
+  if (mobileMenuBtn && mobileMenu) {
+    mobileMenuBtn.addEventListener('click', () => {
+      const isOpen = !mobileMenu.classList.contains('hidden');
+      if (isOpen) {
+        mobileMenu.classList.add('hidden');
+        hamburgerIcon?.classList.remove('hidden');
+        closeIcon?.classList.add('hidden');
+      } else {
+        mobileMenu.classList.remove('hidden');
+        hamburgerIcon?.classList.add('hidden');
+        closeIcon?.classList.remove('hidden');
+      }
+    });
+
+    mobileMenu.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+        hamburgerIcon?.classList.remove('hidden');
+        closeIcon?.classList.add('hidden');
+      });
     });
   }
 </script>
