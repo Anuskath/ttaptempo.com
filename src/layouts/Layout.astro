@@ -8,6 +8,7 @@ interface Props {
   description?: string;
   keywords?: string;
   canonicalPath?: string;
+  noindex?: boolean;
 }
 
 const {
@@ -15,6 +16,7 @@ const {
   description = 'Free online tap tempo and BPM counter tool. Calculate beats per minute accurately by tapping any key, listen with synthesized metronome, and sync delay times.',
   keywords = 'tap tempo, bpm counter, tap for bpm, online metronome, tap bpm tool, tempo finder, beats per minute calculator, delay sync calculator',
   canonicalPath = '/',
+  noindex = false,
 } = Astro.props;
 
 const canonicalUrl = new URL(canonicalPath, 'https://ttaptempo.com').href;
@@ -33,7 +35,7 @@ const canonicalUrl = new URL(canonicalPath, 'https://ttaptempo.com').href;
     <title>{title}</title>
     <meta name="description" content={description} />
     <meta name="keywords" content={keywords} />
-    <meta name="robots" content="index, follow" />
+    <meta name="robots" content={noindex ? "noindex, follow" : "index, follow"} />
     <link rel="canonical" href={canonicalUrl} />
 
     <!-- Open Graph / Facebook -->

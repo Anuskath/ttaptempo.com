@@ -1,0 +1,109 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+  title="500 - Audio Engine Glitch | ttaptempo.com"
+  description="An unexpected system or synthesizer interruption occurred. Reload the page or return to the main tap tempo tool on ttaptempo.com."
+  canonicalPath="/500.html"
+  noindex={true}
+>
+  <div class="relative w-full py-20 sm:py-28 px-4 flex flex-col items-center justify-center text-center aurora-mesh-light min-h-[75vh]">
+    <div class="max-w-xl mx-auto">
+      
+      <!-- Top Badge -->
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-red-500/20 bg-red-500/10 text-xs font-mono font-medium text-red-600 dark:text-red-400 mb-6 shadow-xs">
+        <span class="w-2 h-2 rounded-full bg-red-500 animate-pulse"></span>
+        <span>Error 500 • Synthesizer Desync</span>
+      </div>
+
+      <!-- Overloaded Waveform Icon -->
+      <div class="w-20 h-20 sm:w-24 sm:h-24 mx-auto rounded-3xl bg-neutral-900 dark:bg-neutral-100 text-white dark:text-black flex items-center justify-center mb-6 shadow-xl shadow-red-500/10">
+        <svg class="w-10 h-10 sm:w-12 sm:h-12 text-red-500 dark:text-red-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+        </svg>
+      </div>
+
+      <!-- Hero 500 Text -->
+      <h1 class="font-mono text-7xl sm:text-9xl font-black tracking-tighter text-neutral-950 dark:text-neutral-50 mb-3">
+        500
+      </h1>
+
+      <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight text-neutral-900 dark:text-neutral-100 mb-3">
+        Audio Frequency Overload
+      </h2>
+
+      <p class="text-sm sm:text-base text-neutral-600 dark:text-neutral-400 mb-8 max-w-md mx-auto leading-relaxed">
+        An unexpected glitch interrupted the processing pipeline. Don't worry, your local browser cache is safe. Try reloading or head back to the main tool.
+      </p>
+
+      <!-- Primary Action Buttons -->
+      <div class="flex flex-wrap items-center justify-center gap-3 mb-10">
+        <button
+          id="reload-btn"
+          type="button"
+          class="px-6 py-3 rounded-xl bg-neutral-900 dark:bg-neutral-100 text-white dark:text-black font-semibold text-sm hover:opacity-90 transition-opacity shadow-md inline-flex items-center gap-2 cursor-pointer"
+        >
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="23 4 23 10 17 10"></polyline>
+            <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path>
+          </svg>
+          <span>Reload &amp; Re-sync</span>
+        </button>
+        <a
+          href="/"
+          class="px-5 py-3 rounded-xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 text-neutral-800 dark:text-neutral-200 font-semibold text-sm hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors cursor-pointer"
+        >
+          Return to Tap Tempo
+        </a>
+      </div>
+
+      <!-- Quick Directory of Tools -->
+      <div class="pt-8 border-t border-neutral-200 dark:border-neutral-800 text-left">
+        <div class="text-xs font-mono uppercase tracking-wider text-neutral-400 text-center mb-4">
+          Quick Recovery Links
+        </div>
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-2">
+          <a
+            href="/"
+            class="p-3 rounded-xl border border-neutral-200 dark:border-neutral-800 bg-white/70 dark:bg-neutral-900/70 hover:border-neutral-400 dark:hover:border-neutral-600 transition-colors text-center block"
+          >
+            <div class="text-xs font-bold text-neutral-900 dark:text-neutral-100">Tap Tempo</div>
+            <div class="text-[10px] text-neutral-500">Main pad</div>
+          </a>
+          <a
+            href="/bpm-counter/"
+            class="p-3 rounded-xl border border-neutral-200 dark:border-neutral-800 bg-white/70 dark:bg-neutral-900/70 hover:border-neutral-400 dark:hover:border-neutral-600 transition-colors text-center block"
+          >
+            <div class="text-xs font-bold text-neutral-900 dark:text-neutral-100">BPM Counter</div>
+            <div class="text-[10px] text-neutral-500">Key tapper</div>
+          </a>
+          <a
+            href="/online-metronome/"
+            class="p-3 rounded-xl border border-neutral-200 dark:border-neutral-800 bg-white/70 dark:bg-neutral-900/70 hover:border-neutral-400 dark:hover:border-neutral-600 transition-colors text-center block"
+          >
+            <div class="text-xs font-bold text-neutral-900 dark:text-neutral-100">Metronome</div>
+            <div class="text-[10px] text-neutral-500">Zero drift</div>
+          </a>
+          <a
+            href="/contact/"
+            class="p-3 rounded-xl border border-neutral-200 dark:border-neutral-800 bg-white/70 dark:bg-neutral-900/70 hover:border-neutral-400 dark:hover:border-neutral-600 transition-colors text-center block"
+          >
+            <div class="text-xs font-bold text-neutral-900 dark:text-neutral-100">Report Glitch</div>
+            <div class="text-[10px] text-neutral-500">Contact team</div>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</Layout>
+
+<script>
+  const reloadBtn = document.getElementById('reload-btn');
+  if (reloadBtn) {
+    reloadBtn.addEventListener('click', () => {
+      window.location.reload();
+    });
+  }
+</script>
