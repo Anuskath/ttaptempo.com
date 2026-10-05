@@ -4,65 +4,178 @@ import Layout from '../layouts/Layout.astro';
 
 <Layout
   title="Privacy Policy - Tap Tempo | ttaptempo.com"
-  description="Privacy Policy for ttaptempo.com. We do not store, track, or share your personal audio or usage data."
+  description="Privacy Policy for ttaptempo.com. Understand our strict zero-data collection architecture, client-side browser execution, Google AdSense compliance, and GDPR/CCPA rights."
   canonicalPath="/privacy-policy/"
 >
-  <div class="max-w-3xl mx-auto px-4 py-16">
-    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-900 text-xs font-mono text-neutral-600 dark:text-neutral-400 mb-4">
-      <span>Data Protection</span>
-    </div>
-    <h1 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-neutral-900 dark:text-neutral-100 mb-6">
-      Privacy Policy
-    </h1>
+  <div class="max-w-4xl mx-auto px-4 py-12 sm:py-16">
+    <!-- Breadcrumbs -->
+    <nav class="flex items-center gap-2 text-xs font-mono text-neutral-500 dark:text-neutral-400 mb-6">
+      <a href="/" class="hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors">Home</a>
+      <span>/</span>
+      <span class="text-neutral-900 dark:text-neutral-100 font-medium">Privacy Policy</span>
+    </nav>
 
-    <div class="prose prose-neutral dark:prose-invert max-w-none text-neutral-700 dark:text-neutral-300 leading-relaxed space-y-6 text-sm">
-      <p class="text-base text-neutral-600 dark:text-neutral-400">
-        Last updated: {new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
-      </p>
-
-      <p>
-        At <strong>ttaptempo.com</strong>, we are committed to respecting and protecting your privacy. This Privacy Policy explains our practices regarding data collection, client-side processing, and third-party advertising.
-      </p>
-
-      <h2 class="text-lg font-bold text-neutral-900 dark:text-neutral-100 mt-6 mb-2">1. No Personal Data Collection</h2>
-      <p>
-        We do not require user accounts, email addresses, phone numbers, or passwords to access our tap tempo tool, interactive metronome, or delay calculators. You can use all features completely anonymously without signing up.
-      </p>
-
-      <h2 class="text-lg font-bold text-neutral-900 dark:text-neutral-100 mt-6 mb-2">2. Client-Side Audio and Calculation Execution</h2>
-      <p>
-        All mathematical calculations (such as calculating the millisecond intervals between your taps and computing BPM rolling averages) and Web Audio sound synthesis occur <strong>strictly inside your local web browser</strong>. No audio signals, microphone recordings, or tap timestamps are ever recorded or transmitted to our servers.
-      </p>
-
-      <h2 class="text-lg font-bold text-neutral-900 dark:text-neutral-100 mt-6 mb-2">3. Local Storage</h2>
-      <p>
-        We use the browser's native <code class="font-mono text-xs">localStorage</code> solely to save your local UI preferences (such as your chosen Dark/Light theme mode). This data remains on your physical device and is never shared with third parties.
-      </p>
-
-      <h2 class="text-lg font-bold text-neutral-900 dark:text-neutral-100 mt-6 mb-2">4. Third-Party Advertising &amp; Google AdSense</h2>
-      <p>
-        We may display non-intrusive advertisements served by third-party ad networks such as Google AdSense to fund our hosting and ongoing development.
-      </p>
-      <ul class="list-disc pl-6 space-y-2">
-        <li>Third-party vendors, including Google, use cookies to serve ads based on a user's prior visits to this website or other websites.</li>
-        <li>Google's use of advertising cookies enables it and its partners to serve ads to users based on their visit to our site and/or other sites on the Internet.</li>
-        <li>Users may opt out of personalized advertising by visiting <a href="https://www.google.com/settings/ads" target="_blank" rel="noopener noreferrer" class="text-blue-600 dark:text-blue-400 underline">Google Ads Settings</a> or <a href="https://www.aboutads.info" target="_blank" rel="noopener noreferrer" class="text-blue-600 dark:text-blue-400 underline">aboutads.info</a>.</li>
-      </ul>
-
-      <h2 class="text-lg font-bold text-neutral-900 dark:text-neutral-100 mt-6 mb-2">5. GDPR &amp; CCPA Compliance</h2>
-      <p>
-        In compliance with the General Data Protection Regulation (GDPR) and the California Consumer Privacy Act (CCPA), we respect your right to privacy. Because we do not collect or store personal identity data, we do not sell or monetize personal information.
-      </p>
-
-      <h2 class="text-lg font-bold text-neutral-900 dark:text-neutral-100 mt-6 mb-2">6. Children's Privacy (COPPA)</h2>
-      <p>
-        Our tools are safe for educational use by students of all ages. We do not knowingly collect any personally identifiable information from children under 13.
-      </p>
-
-      <h2 class="text-lg font-bold text-neutral-900 dark:text-neutral-100 mt-6 mb-2">7. Contact Us</h2>
-      <p>
-        If you have questions regarding this Privacy Policy, you may contact us at <a href="mailto:privacy@ttaptempo.com" class="text-blue-600 dark:text-blue-400 underline">privacy@ttaptempo.com</a>.
+    <!-- Header Badge & Title -->
+    <div class="mb-10">
+      <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-emerald-500/20 bg-emerald-500/10 text-xs font-mono text-emerald-600 dark:text-emerald-400 mb-4">
+        <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+        <span>Data Privacy &amp; Security</span>
+      </div>
+      <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight text-neutral-900 dark:text-neutral-50 mb-3">
+        Privacy Policy
+      </h1>
+      <p class="text-sm text-neutral-500 dark:text-neutral-400">
+        Effective Date: January 1, 2026 • Last updated: {new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
       </p>
     </div>
+
+    <!-- Main Content -->
+    <article class="prose prose-neutral dark:prose-invert max-w-none text-neutral-700 dark:text-neutral-300 leading-relaxed text-sm sm:text-base space-y-8">
+      
+      <!-- Section 1: Overview -->
+      <div>
+        <h2 class="text-xl sm:text-2xl font-bold text-neutral-900 dark:text-neutral-100 mb-3">
+          1. Introduction &amp; Core Commitment
+        </h2>
+        <p>
+          Welcome to <strong>ttaptempo.com</strong> ("we", "our", or "us"). We recognize that your privacy is paramount. This Privacy Policy outlines our principles, practices, and guidelines regarding how information is handled when you visit our website, utilize our <strong>tap tempo</strong> bpm counter, practice with our online metronome, or use our audio delay synchronization tools.
+        </p>
+        <p>
+          Our foundational architectural principle is straightforward: <strong>We do not collect, store, sell, or monetize your personal identity data</strong>. Our web utilities are engineered to operate anonymously and execute purely on the client side inside your web browser.
+        </p>
+      </div>
+
+      <!-- Section 2: Zero Personal Data Collection -->
+      <div class="pt-6 border-t border-neutral-100 dark:border-neutral-900">
+        <h2 class="text-xl sm:text-2xl font-bold text-neutral-900 dark:text-neutral-100 mb-3">
+          2. Zero Personal Data Collection
+        </h2>
+        <p>
+          Unlike conventional web services, you are not required to create an account, register an email address, provide credit card information, or link social media profiles to use ttaptempo.com. You can access every single tool, tempo marking, and delay calculation completely free and without an account.
+        </p>
+        <ul class="list-disc pl-6 space-y-2">
+          <li><strong>No User Profiles:</strong> We do not maintain user databases, member rosters, or tracking profiles.</li>
+          <li><strong>No Audio Recording:</strong> Our tool does <em>not</em> access, record, or transmit audio from your device microphone. All BPM calculations are derived strictly from keyboard keypresses, mouse clicks, or touchscreen tap timestamps.</li>
+        </ul>
+      </div>
+
+      <!-- Section 3: Client-Side Execution Architecture -->
+      <div class="pt-6 border-t border-neutral-100 dark:border-neutral-900">
+        <h2 class="text-xl sm:text-2xl font-bold text-neutral-900 dark:text-neutral-100 mb-3">
+          3. Client-Side Execution &amp; High-Resolution Timers
+        </h2>
+        <p>
+          Every mathematical computation performed on ttaptempo.com—including calculating millisecond intervals between taps, computing rolling moving averages, synthesizing audio metronome clicks, and converting tempo into delay note divisions—takes place <strong>entirely within your browser's local sandbox</strong>.
+        </p>
+        <p>
+          We employ the W3C High Resolution Time API (<code class="font-mono text-xs">window.performance.now()</code>) and the Web Audio API (<code class="font-mono text-xs">AudioContext</code>) directly in client JavaScript. No timing data or session statistics are ever uploaded to remote servers.
+        </p>
+      </div>
+
+      <!-- Section 4: Cookies & Local Storage -->
+      <div class="pt-6 border-t border-neutral-100 dark:border-neutral-900">
+        <h2 class="text-xl sm:text-2xl font-bold text-neutral-900 dark:text-neutral-100 mb-3">
+          4. Cookies, Web Storage &amp; Browser Preferences
+        </h2>
+        <p>
+          We do not use tracking cookies to monitor your online activity across other websites. We utilize your browser's native <code class="font-mono text-xs">localStorage</code> solely for essential user experience preferences:
+        </p>
+        <ul class="list-disc pl-6 space-y-2">
+          <li><strong>Theme Mode Preference:</strong> Storing whether you have selected Dark Mode or Light Mode so your chosen appearance persists between page visits.</li>
+        </ul>
+        <p class="text-xs text-neutral-500 dark:text-neutral-400 mt-2">
+          This data remains physically stored on your individual device and is never transmitted to us or any third party. You can clear this data at any time via your browser settings.
+        </p>
+      </div>
+
+      <!-- Section 5: Third-Party Advertising & Google AdSense -->
+      <div class="pt-6 border-t border-neutral-100 dark:border-neutral-900">
+        <h2 class="text-xl sm:text-2xl font-bold text-neutral-900 dark:text-neutral-100 mb-3">
+          5. Third-Party Advertising &amp; Google AdSense
+        </h2>
+        <p>
+          To maintain ttaptempo.com as a 100% free resource for creators worldwide without requiring paywalls or subscriptions, we may display non-intrusive advertisements served by third-party advertising networks, such as Google AdSense.
+        </p>
+        <div class="p-4 rounded-xl border border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-900 text-xs sm:text-sm space-y-2">
+          <p><strong>Important Google AdSense Disclosures:</strong></p>
+          <ul class="list-disc pl-5 space-y-1.5">
+            <li>Third-party vendors, including Google, use cookies to serve ads based on a user's prior visits to your website or other websites.</li>
+            <li>Google's use of advertising cookies enables it and its partners to serve ads to your users based on their visit to your sites and/or other sites on the Internet.</li>
+            <li>Users may opt out of personalized advertising by visiting <a href="https://www.google.com/settings/ads" target="_blank" rel="noopener noreferrer" class="text-blue-600 dark:text-blue-400 underline font-medium">Google Ads Settings</a>.</li>
+            <li>Alternatively, users can opt out of a third-party vendor's use of cookies for personalized advertising by visiting <a href="https://www.aboutads.info" target="_blank" rel="noopener noreferrer" class="text-blue-600 dark:text-blue-400 underline font-medium">www.aboutads.info</a>.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Section 6: Log Files -->
+      <div class="pt-6 border-t border-neutral-100 dark:border-neutral-900">
+        <h2 class="text-xl sm:text-2xl font-bold text-neutral-900 dark:text-neutral-100 mb-3">
+          6. Standard Server Log Files
+        </h2>
+        <p>
+          Like virtually all modern web hosting platforms and global Content Delivery Networks (CDNs like Cloudflare), standard HTTP server logs may temporarily capture basic technical data when web assets are requested. This information includes internet protocol (IP) addresses, browser type, Internet Service Provider (ISP), referring/exit pages, date/time stamps, and operating system identifiers.
+        </p>
+        <p>
+          This telemetry is aggregated anonymously for security monitoring, DDoS mitigation, server performance optimization, and detecting broken links. It is not linked to any personally identifiable information.
+        </p>
+      </div>
+
+      <!-- Section 7: GDPR & CCPA Rights -->
+      <div class="pt-6 border-t border-neutral-100 dark:border-neutral-900">
+        <h2 class="text-xl sm:text-2xl font-bold text-neutral-900 dark:text-neutral-100 mb-3">
+          7. GDPR &amp; CCPA Data Rights Compliance
+        </h2>
+        <p>
+          We respect the privacy rights granted to individuals under international frameworks, including the European Union's General Data Protection Regulation (GDPR) and the California Consumer Privacy Act (CCPA):
+        </p>
+        <ul class="list-disc pl-6 space-y-2">
+          <li><strong>The Right to Access &amp; Portability:</strong> You have the right to request copies of your personal data. Because we do not store personal profiles, we hold no personal data associated with individual users.</li>
+          <li><strong>The Right to Erasure / "Right to be Forgotten":</strong> Because we do not store identifying records, there is no personal data to delete.</li>
+          <li><strong>Do Not Sell My Personal Information:</strong> We do not sell, rent, trade, or monetize personal information to data brokers or advertisers.</li>
+        </ul>
+      </div>
+
+      <!-- Section 8: Children's Privacy -->
+      <div class="pt-6 border-t border-neutral-100 dark:border-neutral-900">
+        <h2 class="text-xl sm:text-2xl font-bold text-neutral-900 dark:text-neutral-100 mb-3">
+          8. Children's Online Privacy Protection (COPPA)
+        </h2>
+        <p>
+          Protecting the safety of children online is of highest importance. Our tap tempo and metronome tools are safe, family-friendly educational resources suitable for music students and classrooms. We do not knowingly collect any personally identifiable information from children under the age of 13.
+        </p>
+      </div>
+
+      <!-- Section 9: Policy Updates & Contact -->
+      <div class="pt-6 border-t border-neutral-100 dark:border-neutral-900">
+        <h2 class="text-xl sm:text-2xl font-bold text-neutral-900 dark:text-neutral-100 mb-3">
+          9. Changes to This Policy &amp; Contact Details
+        </h2>
+        <p>
+          We may update our Privacy Policy periodically to reflect technological improvements or regulatory updates. Any changes will be posted directly on this page with an updated revision date.
+        </p>
+        <p>
+          If you have questions, inquiries, or suggestions regarding our privacy practices, please contact our team via:
+        </p>
+        <div class="mt-3 p-4 rounded-xl border border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-900 not-prose flex items-center justify-between">
+          <div>
+            <div class="text-xs text-neutral-500">Privacy &amp; Data Governance</div>
+            <div class="text-sm font-mono font-medium text-neutral-900 dark:text-neutral-100">privacy@ttaptempo.com</div>
+          </div>
+          <a href="/contact/" class="text-xs font-semibold px-3 py-1.5 rounded-lg bg-neutral-900 dark:bg-neutral-100 text-white dark:text-black hover:opacity-90 transition-opacity">
+            Contact Page
+          </a>
+        </div>
+      </div>
+
+    </article>
   </div>
 </Layout>
+
+<!-- JSON-LD WebPage Schema -->
+<script type="application/ld+json" set:html={JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Privacy Policy - ttaptempo.com",
+  "url": "https://ttaptempo.com/privacy-policy/",
+  "description": "Privacy Policy for ttaptempo.com explaining client-side Web Audio execution, zero personal data collection, and Google AdSense compliance."
+})} />

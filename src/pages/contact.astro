@@ -3,102 +3,231 @@ import Layout from '../layouts/Layout.astro';
 ---
 
 <Layout
-  title="Contact Us - Tap Tempo | ttaptempo.com"
-  description="Get in touch with the ttaptempo.com development team for feature suggestions, questions, or bug reports."
+  title="Contact Us & Support - Tap Tempo | ttaptempo.com"
+  description="Contact the ttaptempo.com development team. Send feature suggestions, algorithm accuracy feedback, bug reports, or general inquiries."
   canonicalPath="/contact/"
 >
-  <div class="max-w-3xl mx-auto px-4 py-16">
-    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-900 text-xs font-mono text-neutral-600 dark:text-neutral-400 mb-4">
-      <span>Support &amp; Inquiries</span>
-    </div>
-    <h1 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-neutral-900 dark:text-neutral-100 mb-4">
-      Contact Us
-    </h1>
-    <p class="text-neutral-600 dark:text-neutral-400 mb-8">
-      We love hearing from musicians, sound designers, and producers. Send us your feedback, feature requests, or report an issue.
-    </p>
+  <div class="max-w-4xl mx-auto px-4 py-12 sm:py-16">
+    <!-- Breadcrumbs -->
+    <nav class="flex items-center gap-2 text-xs font-mono text-neutral-500 dark:text-neutral-400 mb-6">
+      <a href="/" class="hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors">Home</a>
+      <span>/</span>
+      <span class="text-neutral-900 dark:text-neutral-100 font-medium">Contact Us</span>
+    </nav>
 
-    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-10">
+    <!-- Header Badge & Title -->
+    <div class="mb-10">
+      <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-900 text-xs font-mono text-neutral-600 dark:text-neutral-400 mb-4">
+        <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+        <span>Support &amp; Community Feedback</span>
+      </div>
+      <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight text-neutral-900 dark:text-neutral-50 mb-3">
+        Get in Touch With Us
+      </h1>
+      <p class="text-base sm:text-lg text-neutral-600 dark:text-neutral-400 max-w-2xl">
+        We value feedback from music producers, audio engineers, drummers, DJs, and educators. Have an idea for a new feature or want to report an issue? We are here to help.
+      </p>
+    </div>
+
+    <!-- Contact Cards Grid (3 Specialized Channels) -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-12">
       
-      <div class="p-6 rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900">
-        <div class="w-10 h-10 rounded-xl bg-blue-50 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400 flex items-center justify-center mb-3">
+      <!-- Card 1: General & Suggestions -->
+      <div class="p-6 rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 shadow-xs">
+        <div class="w-10 h-10 rounded-xl bg-blue-500/10 text-blue-600 dark:text-blue-400 flex items-center justify-center mb-4">
           <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
             <polyline points="22,6 12,13 2,6"></polyline>
           </svg>
         </div>
-        <h3 class="font-bold text-base text-neutral-900 dark:text-neutral-100 mb-1">Direct Email</h3>
-        <p class="text-xs text-neutral-500 dark:text-neutral-400 mb-3">For general inquiries, partnerships, and developer questions:</p>
-        <a href="mailto:hello@ttaptempo.com" class="text-sm font-mono font-medium text-blue-600 dark:text-blue-400 hover:underline">
+        <h3 class="font-bold text-base text-neutral-900 dark:text-neutral-100 mb-1">General Inquiries</h3>
+        <p class="text-xs text-neutral-500 dark:text-neutral-400 mb-4 leading-relaxed">
+          Questions regarding website features, tools, or general suggestions:
+        </p>
+        <a href="mailto:hello@ttaptempo.com" class="text-xs font-mono font-semibold text-blue-600 dark:text-blue-400 hover:underline break-all">
           hello@ttaptempo.com
         </a>
       </div>
 
-      <div class="p-6 rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900">
-        <div class="w-10 h-10 rounded-xl bg-emerald-50 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400 flex items-center justify-center mb-3">
+      <!-- Card 2: Bug Reports & Algorithm Feedback -->
+      <div class="p-6 rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 shadow-xs">
+        <div class="w-10 h-10 rounded-xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 flex items-center justify-center mb-4">
           <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+            <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
           </svg>
         </div>
-        <h3 class="font-bold text-base text-neutral-900 dark:text-neutral-100 mb-1">Response Time</h3>
-        <p class="text-xs text-neutral-500 dark:text-neutral-400 mb-3">Our technical team reviews all incoming inquiries promptly:</p>
-        <span class="text-xs font-mono px-2 py-1 rounded bg-neutral-100 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300">
-          Typically within 24–48 hours
-        </span>
+        <h3 class="font-bold text-base text-neutral-900 dark:text-neutral-100 mb-1">Timing &amp; Bug Reports</h3>
+        <p class="text-xs text-neutral-500 dark:text-neutral-400 mb-4 leading-relaxed">
+          Noticed timing jitter or an issue on a specific device or browser?
+        </p>
+        <a href="mailto:support@ttaptempo.com" class="text-xs font-mono font-semibold text-emerald-600 dark:text-emerald-400 hover:underline break-all">
+          support@ttaptempo.com
+        </a>
+      </div>
+
+      <!-- Card 3: Privacy & Legal -->
+      <div class="p-6 rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 shadow-xs">
+        <div class="w-10 h-10 rounded-xl bg-purple-500/10 text-purple-600 dark:text-purple-400 flex items-center justify-center mb-4">
+          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+          </svg>
+        </div>
+        <h3 class="font-bold text-base text-neutral-900 dark:text-neutral-100 mb-1">Privacy &amp; Terms</h3>
+        <p class="text-xs text-neutral-500 dark:text-neutral-400 mb-4 leading-relaxed">
+          Questions regarding data policies, copyright, or legal notices:
+        </p>
+        <a href="mailto:privacy@ttaptempo.com" class="text-xs font-mono font-semibold text-purple-600 dark:text-purple-400 hover:underline break-all">
+          privacy@ttaptempo.com
+        </a>
       </div>
 
     </div>
 
-    <!-- Contact Form (Interactive Front-End) -->
-    <div class="rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-900/60 p-6 sm:p-8">
-      <h3 class="text-lg font-bold text-neutral-900 dark:text-neutral-100 mb-4">Send a Message</h3>
-      <form id="contact-form" class="space-y-4">
+    <!-- Contact Form Section -->
+    <div class="rounded-3xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950 p-6 sm:p-10 shadow-lg shadow-neutral-500/5">
+      <div class="max-w-xl">
+        <h2 class="text-xl sm:text-2xl font-bold text-neutral-900 dark:text-neutral-100 mb-2">
+          Send Us a Direct Message
+        </h2>
+        <p class="text-xs sm:text-sm text-neutral-500 dark:text-neutral-400 mb-8 leading-relaxed">
+          Fill out the form below. We review all incoming messages and typically respond within 24 to 48 business hours.
+        </p>
+      </div>
+
+      <form id="contact-form" class="space-y-5">
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div>
-            <label class="block text-xs font-medium text-neutral-700 dark:text-neutral-300 mb-1">Your Name</label>
-            <input type="text" required class="w-full px-3 py-2 rounded-lg border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-950 text-sm focus:outline-none focus:ring-1 focus:ring-neutral-400" placeholder="Alex Rivers" />
+            <label for="contact-name" class="block text-xs font-semibold uppercase tracking-wider text-neutral-700 dark:text-neutral-300 mb-1.5">
+              Your Name <span class="text-red-500">*</span>
+            </label>
+            <input
+              id="contact-name"
+              type="text"
+              required
+              class="w-full px-3.5 py-2.5 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-900 text-sm text-neutral-900 dark:text-neutral-100 focus:outline-none focus:ring-2 focus:ring-blue-500/40"
+              placeholder="e.g. Jordan Smith"
+            />
           </div>
           <div>
-            <label class="block text-xs font-medium text-neutral-700 dark:text-neutral-300 mb-1">Your Email</label>
-            <input type="email" required class="w-full px-3 py-2 rounded-lg border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-950 text-sm focus:outline-none focus:ring-1 focus:ring-neutral-400" placeholder="alex@producer.com" />
+            <label for="contact-email" class="block text-xs font-semibold uppercase tracking-wider text-neutral-700 dark:text-neutral-300 mb-1.5">
+              Email Address <span class="text-red-500">*</span>
+            </label>
+            <input
+              id="contact-email"
+              type="email"
+              required
+              class="w-full px-3.5 py-2.5 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-900 text-sm text-neutral-900 dark:text-neutral-100 focus:outline-none focus:ring-2 focus:ring-blue-500/40"
+              placeholder="jordan@producer.com"
+            />
           </div>
         </div>
 
         <div>
-          <label class="block text-xs font-medium text-neutral-700 dark:text-neutral-300 mb-1">Subject</label>
-          <select class="w-full px-3 py-2 rounded-lg border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-950 text-sm focus:outline-none focus:ring-1 focus:ring-neutral-400">
-            <option>Feature Suggestion</option>
-            <option>BPM Accuracy / Timing Feedback</option>
-            <option>Bug Report</option>
-            <option>General Question</option>
+          <label for="contact-subject" class="block text-xs font-semibold uppercase tracking-wider text-neutral-700 dark:text-neutral-300 mb-1.5">
+            Subject Category
+          </label>
+          <select
+            id="contact-subject"
+            class="w-full px-3.5 py-2.5 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-900 text-sm text-neutral-900 dark:text-neutral-100 focus:outline-none focus:ring-2 focus:ring-blue-500/40"
+          >
+            <option value="Feature Suggestion">Feature Suggestion or New Tool Idea</option>
+            <option value="BPM Accuracy Feedback">BPM Algorithm &amp; Timing Precision</option>
+            <option value="Bug Report">Bug or Glitch Report (Mobile / Desktop)</option>
+            <option value="Audio Metronome Feedback">Web Audio Metronome Feedback</option>
+            <option value="Other">General Inquiry</option>
           </select>
         </div>
 
         <div>
-          <label class="block text-xs font-medium text-neutral-700 dark:text-neutral-300 mb-1">Message</label>
-          <textarea rows="4" required class="w-full px-3 py-2 rounded-lg border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-950 text-sm focus:outline-none focus:ring-1 focus:ring-neutral-400" placeholder="Tell us your suggestions or experience..."></textarea>
+          <label for="contact-message" class="block text-xs font-semibold uppercase tracking-wider text-neutral-700 dark:text-neutral-300 mb-1.5">
+            Your Message <span class="text-red-500">*</span>
+          </label>
+          <textarea
+            id="contact-message"
+            rows="5"
+            required
+            class="w-full px-3.5 py-2.5 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-900 text-sm text-neutral-900 dark:text-neutral-100 focus:outline-none focus:ring-2 focus:ring-blue-500/40"
+            placeholder="Describe your suggestion, the hardware/browser you used, or any questions you have..."
+          ></textarea>
         </div>
 
-        <button type="submit" class="px-5 py-2.5 rounded-lg bg-neutral-900 dark:bg-neutral-100 text-white dark:text-black font-semibold text-sm hover:bg-neutral-800 dark:hover:bg-neutral-200 transition-colors cursor-pointer">
-          Send Message
-        </button>
-        <span id="contact-success" class="hidden text-xs text-emerald-600 dark:text-emerald-400 font-medium ml-3">
-          ✓ Thank you! Your message has been prepared.
-        </span>
+        <div class="flex flex-wrap items-center gap-4 pt-2">
+          <button
+            type="submit"
+            class="px-6 py-3 rounded-xl bg-neutral-900 dark:bg-neutral-100 text-white dark:text-black font-semibold text-sm hover:opacity-90 transition-opacity cursor-pointer shadow-md"
+          >
+            Send Message
+          </button>
+          <div id="contact-success" class="hidden items-center gap-2 text-xs font-medium text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-200 dark:border-emerald-800/80 px-3 py-2 rounded-lg">
+            <svg class="w-4 h-4 text-emerald-500 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+            <span>Thank you! Your message has been prepared and sent.</span>
+          </div>
+        </div>
       </form>
     </div>
+
+    <!-- Quick Self-Service FAQ links -->
+    <div class="mt-16 pt-10 border-t border-neutral-200 dark:border-neutral-800 text-center">
+      <h3 class="text-base font-bold text-neutral-900 dark:text-neutral-100 mb-2">Looking for quick answers?</h3>
+      <p class="text-xs text-neutral-500 dark:text-neutral-400 mb-4">Check our 15 comprehensive technical answers covering tempo calculation, delay pedals, and DAW shortcuts.</p>
+      <a href="/#faq" class="inline-flex items-center gap-1.5 text-xs font-semibold px-4 py-2 rounded-lg border border-neutral-200 dark:border-neutral-800 hover:bg-neutral-100 dark:hover:bg-neutral-900 transition-colors">
+        <span>View the 15 Technical FAQs</span>
+        <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="9 18 15 12 9 6"></polyline>
+        </svg>
+      </a>
+    </div>
+
   </div>
 </Layout>
+
+<!-- JSON-LD ContactPage Schema -->
+<script type="application/ld+json" set:html={JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "ContactPage",
+  "name": "Contact Us - ttaptempo.com",
+  "url": "https://ttaptempo.com/contact/",
+  "description": "Get in touch with the ttaptempo.com development team for feature suggestions, questions, or bug reports.",
+  "mainEntity": {
+    "@type": "Organization",
+    "name": "Tap Tempo",
+    "url": "https://ttaptempo.com/",
+    "email": "hello@ttaptempo.com"
+  }
+})} />
 
 <script>
   const form = document.getElementById('contact-form') as HTMLFormElement;
   const successMsg = document.getElementById('contact-success') as HTMLElement;
+  
   if (form) {
     form.addEventListener('submit', (e) => {
       e.preventDefault();
-      successMsg.classList.remove('hidden');
+      const name = (document.getElementById('contact-name') as HTMLInputElement)?.value || '';
+      const email = (document.getElementById('contact-email') as HTMLInputElement)?.value || '';
+      const subject = (document.getElementById('contact-subject') as HTMLSelectElement)?.value || 'Inquiry';
+      const message = (document.getElementById('contact-message') as HTMLTextAreaElement)?.value || '';
+      
+      // Open default mail client as reliable fallback
+      const mailtoUrl = `mailto:hello@ttaptempo.com?subject=${encodeURIComponent(`[${subject}] from ${name}`)}&body=${encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`)}`;
+      
+      if (successMsg) {
+        successMsg.classList.remove('hidden');
+        successMsg.classList.add('inline-flex');
+      }
+      
+      // Trigger mail client
+      window.location.href = mailtoUrl;
       form.reset();
-      setTimeout(() => successMsg.classList.add('hidden'), 4000);
+
+      setTimeout(() => {
+        if (successMsg) {
+          successMsg.classList.add('hidden');
+          successMsg.classList.remove('inline-flex');
+        }
+      }, 6000);
     });
   }
 </script>

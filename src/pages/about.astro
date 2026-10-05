@@ -4,54 +4,219 @@ import Layout from '../layouts/Layout.astro';
 
 <Layout
   title="About Us - Tap Tempo | ttaptempo.com"
-  description="Learn about ttaptempo.com, our mission to build fast, free, client-side audio utilities with zero sign-ups and zero data tracking."
+  description="Discover the story and engineering behind ttaptempo.com. Built by audio engineers and musicians to deliver an ultra-fast, zero-latency, 100% free online tap tempo and metronome tool."
   canonicalPath="/about/"
 >
-  <div class="max-w-3xl mx-auto px-4 py-16">
-    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-900 text-xs font-mono text-neutral-600 dark:text-neutral-400 mb-4">
-      <span>Our Mission</span>
-    </div>
-    <h1 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-neutral-900 dark:text-neutral-100 mb-6">
-      About ttaptempo.com
-    </h1>
+  <div class="max-w-4xl mx-auto px-4 py-12 sm:py-16">
+    <!-- Breadcrumbs -->
+    <nav class="flex items-center gap-2 text-xs font-mono text-neutral-500 dark:text-neutral-400 mb-6">
+      <a href="/" class="hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors">Home</a>
+      <span>/</span>
+      <span class="text-neutral-900 dark:text-neutral-100 font-medium">About Us</span>
+    </nav>
 
-    <div class="prose prose-neutral dark:prose-invert max-w-none text-neutral-700 dark:text-neutral-300 leading-relaxed space-y-6">
-      <p class="text-lg">
-        <strong>ttaptempo.com</strong> was engineered to solve a common frustration experienced by musicians, sound designers, audio engineers, DJs, and music students: existing online tap tempo tools were cluttered with distracting ads, required intrusive account creation, or lacked essential music production features.
+    <!-- Header Badge & Title -->
+    <div class="mb-10">
+      <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-blue-500/20 bg-blue-500/10 text-xs font-mono text-blue-600 dark:text-blue-400 mb-4">
+        <span class="w-1.5 h-1.5 rounded-full bg-blue-500"></span>
+        <span>Audio Engineering &amp; Timing Tools</span>
+      </div>
+      <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight text-neutral-900 dark:text-neutral-50 mb-3">
+        About ttaptempo.com
+      </h1>
+      <p class="text-base sm:text-lg text-neutral-600 dark:text-neutral-400 max-w-2xl">
+        We build minimalist, developer-grade audio utilities designed for studio musicians, touring performers, beatmakers, and music educators worldwide.
       </p>
+    </div>
 
-      <h2 class="text-xl font-bold text-neutral-900 dark:text-neutral-100 mt-8 mb-3">Our Core Principles</h2>
+    <!-- Main Content -->
+    <article class="prose prose-neutral dark:prose-invert max-w-none text-neutral-700 dark:text-neutral-300 leading-relaxed text-sm sm:text-base space-y-10">
       
+      <!-- Section 1: The Origin Story -->
+      <div>
+        <h2 class="text-xl sm:text-2xl font-bold text-neutral-900 dark:text-neutral-100 mb-3">
+          Why We Built ttaptempo.com
+        </h2>
+        <p>
+          Whether you are tracking drums in a recording studio, synchronizing delay repeats on a pedalboard before a gig, or DJing a live festival transition, finding the exact tempo of music should take seconds—not minutes.
+        </p>
+        <p>
+          Unfortunately, most existing web tools built in the 2000s were never modernized: they are covered in pop-up banner ads that block the tap button, require slow full-page reloads, fail to work reliably on mobile touchscreens, or trap essential features behind mandatory account registrations and monthly subscriptions.
+        </p>
+        <p>
+          We created <strong>ttaptempo.com</strong> with a clear, uncompromising mandate: <strong>craft the fastest, cleanest, most mathematically accurate tap tempo and metronome tool on the web</strong>—completely free, ad-sensible, and without any sign-up walls.
+        </p>
+      </div>
+
+      <!-- Feature Grid: Pillars -->
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 not-prose my-6">
-        <div class="p-5 rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-900">
-          <h3 class="font-bold text-sm text-neutral-900 dark:text-neutral-100 mb-1">100% Free &amp; Unlimited</h3>
-          <p class="text-xs text-neutral-500 dark:text-neutral-400">No subscriptions, no premium tiers, no locked features. Every tool is completely open and free for creators worldwide.</p>
+        <div class="p-5 rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 shadow-xs">
+          <div class="w-8 h-8 rounded-lg bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 flex items-center justify-center font-bold text-sm mb-3">
+            01
+          </div>
+          <h3 class="font-bold text-base text-neutral-900 dark:text-neutral-100 mb-1">100% Free Forever</h3>
+          <p class="text-xs text-neutral-500 dark:text-neutral-400 leading-relaxed">
+            No trial periods, no paywalls, no "pro" tiers. All features—from audio metronomes to the delay sync table—are unconditionally open to everyone.
+          </p>
         </div>
-        <div class="p-5 rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-900">
-          <h3 class="font-bold text-sm text-neutral-900 dark:text-neutral-100 mb-1">Zero Accounts Required</h3>
-          <p class="text-xs text-neutral-500 dark:text-neutral-400">No passwords to remember, no email signups, no spam. Open the site and tap immediately.</p>
+
+        <div class="p-5 rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 shadow-xs">
+          <div class="w-8 h-8 rounded-lg bg-blue-500/10 text-blue-600 dark:text-blue-400 flex items-center justify-center font-bold text-sm mb-3">
+            02
+          </div>
+          <h3 class="font-bold text-base text-neutral-900 dark:text-neutral-100 mb-1">Zero Accounts or Tracking</h3>
+          <p class="text-xs text-neutral-500 dark:text-neutral-400 leading-relaxed">
+            No username, no password, no email collection. Simply navigate to the URL and start tapping immediately.
+          </p>
         </div>
-        <div class="p-5 rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-900">
-          <h3 class="font-bold text-sm text-neutral-900 dark:text-neutral-100 mb-1">Private &amp; Client-Side</h3>
-          <p class="text-xs text-neutral-500 dark:text-neutral-400">All timing math and Web Audio synthesizer calculations run directly inside your browser. No personal audio data is ever transmitted to a server.</p>
+
+        <div class="p-5 rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 shadow-xs">
+          <div class="w-8 h-8 rounded-lg bg-purple-500/10 text-purple-600 dark:text-purple-400 flex items-center justify-center font-bold text-sm mb-3">
+            03
+          </div>
+          <h3 class="font-bold text-base text-neutral-900 dark:text-neutral-100 mb-1">Sub-Millisecond Timing</h3>
+          <p class="text-xs text-neutral-500 dark:text-neutral-400 leading-relaxed">
+            Utilizes hardware-accelerated high-resolution microsecond timers to calculate accurate rolling averages and eliminate human tapping jitter.
+          </p>
         </div>
-        <div class="p-5 rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-900">
-          <h3 class="font-bold text-sm text-neutral-900 dark:text-neutral-100 mb-1">Sub-Millisecond Accuracy</h3>
-          <p class="text-xs text-neutral-500 dark:text-neutral-400">Powered by the browser's High Resolution Time API for professional studio accuracy.</p>
+
+        <div class="p-5 rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 shadow-xs">
+          <div class="w-8 h-8 rounded-lg bg-amber-500/10 text-amber-600 dark:text-amber-400 flex items-center justify-center font-bold text-sm mb-3">
+            04
+          </div>
+          <h3 class="font-bold text-base text-neutral-900 dark:text-neutral-100 mb-1">Synthesized Web Audio</h3>
+          <p class="text-xs text-neutral-500 dark:text-neutral-400 leading-relaxed">
+            Pure in-browser oscillator and noise-burst sound generation with zero sample download delay, perfect downbeat accents, and multiple sound kits.
+          </p>
         </div>
       </div>
 
-      <h2 class="text-xl font-bold text-neutral-900 dark:text-neutral-100 mt-8 mb-3">Who Is This Built For?</h2>
-      <ul class="list-disc pl-6 space-y-2 text-sm">
-        <li><strong>Music Producers &amp; Beatmakers:</strong> Synchronize reverb pre-delay and delay plugin repeats to your track tempo.</li>
-        <li><strong>DJs &amp; Performers:</strong> Quickly verify song tempo during transitions or live sets.</li>
-        <li><strong>Instrumentalists (Guitar, Piano, Drums):</strong> Practice steady meter and rhythm timing.</li>
-        <li><strong>Athletes &amp; Dancers:</strong> Determine musical pacing for choreographies, running cadences, and aerobics.</li>
-      </ul>
+      <!-- Section 2: Technical Engineering -->
+      <div class="pt-6 border-t border-neutral-100 dark:border-neutral-900">
+        <h2 class="text-xl sm:text-2xl font-bold text-neutral-900 dark:text-neutral-100 mb-3">
+          The Engineering Behind Our Tools
+        </h2>
+        <p>
+          Behind the minimalist visual interface lies a robust audio engineering pipeline built on modern web standards:
+        </p>
+        <ul class="list-disc pl-6 space-y-2">
+          <li>
+            <strong>High-Resolution Interval Capture:</strong> We measure inter-tap intervals using <code class="font-mono text-xs">window.performance.now()</code>, which provides timing resolution down to thousandths of a millisecond.
+          </li>
+          <li>
+            <strong>Weighted Rolling Average Algorithm:</strong> Human tapping naturally fluctuates by 10–25 milliseconds. Our smoothing algorithm filters out anomalous single-tap spikes and computes a rolling 16-tap window to yield rock-solid BPM readings within ±0.1 BPM.
+          </li>
+          <li>
+            <strong>Drift-Free Audio Metronome:</strong> Standard JavaScript <code class="font-mono text-xs">setInterval</code> is subject to CPU throttling and tab desynchronization. We implement a lookahead audio scheduler driven by the Web Audio API hardware clock, guaranteeing sample-accurate clicks without timing drift.
+          </li>
+          <li>
+            <strong>Zero-Lag Mobile Haptics:</strong> On touch devices supporting the HTML5 Vibration API, tapping the pad triggers micro-vibrations for a tactile, physical pad feel.
+          </li>
+        </ul>
+      </div>
 
-      <p class="text-sm pt-4">
-        Have questions or feedback? Feel free to reach out to our team at <a href="/contact/" class="text-blue-600 dark:text-blue-400 underline underline-offset-4">our contact page</a>.
-      </p>
-    </div>
+      <!-- Section 3: Who Uses Our Tools -->
+      <div class="pt-6 border-t border-neutral-100 dark:border-neutral-900">
+        <h2 class="text-xl sm:text-2xl font-bold text-neutral-900 dark:text-neutral-100 mb-3">
+          Who Uses ttaptempo.com?
+        </h2>
+        <div class="space-y-4">
+          <div class="flex items-start gap-3">
+            <span class="w-2 h-2 rounded-full bg-emerald-500 mt-2 shrink-0"></span>
+            <div>
+              <strong class="text-neutral-900 dark:text-neutral-100">Music Producers &amp; Beatmakers:</strong>
+              <p class="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 mt-0.5">
+                Quickly discover the tempo of sample loops or vocal acapellas before importing them into Ableton Live, FL Studio, Logic Pro, or Cubase.
+              </p>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-3">
+            <span class="w-2 h-2 rounded-full bg-blue-500 mt-2 shrink-0"></span>
+            <div>
+              <strong class="text-neutral-900 dark:text-neutral-100">Guitarists &amp; Pedalboard Enthusiasts:</strong>
+              <p class="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 mt-0.5">
+                Calculate exact millisecond delay times (1/4 note, dotted 1/8 note, triplets) to dial in Strymon, Boss, Line 6, or TC Electronic delay pedals.
+              </p>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-3">
+            <span class="w-2 h-2 rounded-full bg-purple-500 mt-2 shrink-0"></span>
+            <div>
+              <strong class="text-neutral-900 dark:text-neutral-100">DJs &amp; Live Performers:</strong>
+              <p class="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 mt-0.5">
+                Verify unanalyzed vinyl records or live band tempo in real time during live venue sets.
+              </p>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-3">
+            <span class="w-2 h-2 rounded-full bg-amber-500 mt-2 shrink-0"></span>
+            <div>
+              <strong class="text-neutral-900 dark:text-neutral-100">Music Students &amp; Educators:</strong>
+              <p class="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 mt-0.5">
+                Study classical Italian tempo markings (Andante, Allegro, Presto) and train rhythmic muscle memory.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section 4: Tested & Calibrated -->
+      <div class="pt-6 border-t border-neutral-100 dark:border-neutral-900">
+        <h2 class="text-xl sm:text-2xl font-bold text-neutral-900 dark:text-neutral-100 mb-3">
+          Studio Calibration &amp; Testing
+        </h2>
+        <p>
+          Our timing equations and delay tables are calibrated against industry-standard digital audio workstations (DAWs) and laboratory hardware metronomes to ensure our math matches commercial studio environments:
+        </p>
+        <div class="flex flex-wrap gap-2 not-prose my-3">
+          <span class="px-2.5 py-1 rounded-lg border border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-900 text-xs font-mono text-neutral-700 dark:text-neutral-300">Ableton Live 12</span>
+          <span class="px-2.5 py-1 rounded-lg border border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-900 text-xs font-mono text-neutral-700 dark:text-neutral-300">Apple Logic Pro</span>
+          <span class="px-2.5 py-1 rounded-lg border border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-900 text-xs font-mono text-neutral-700 dark:text-neutral-300">Avid Pro Tools</span>
+          <span class="px-2.5 py-1 rounded-lg border border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-900 text-xs font-mono text-neutral-700 dark:text-neutral-300">FL Studio</span>
+          <span class="px-2.5 py-1 rounded-lg border border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-900 text-xs font-mono text-neutral-700 dark:text-neutral-300">Strymon Timeline</span>
+          <span class="px-2.5 py-1 rounded-lg border border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-900 text-xs font-mono text-neutral-700 dark:text-neutral-300">Boss DD-500</span>
+        </div>
+      </div>
+
+      <!-- Section 5: Contact & Feedback CTA -->
+      <div class="pt-6 border-t border-neutral-100 dark:border-neutral-900">
+        <h2 class="text-xl sm:text-2xl font-bold text-neutral-900 dark:text-neutral-100 mb-3">
+          Get in Touch With Us
+        </h2>
+        <p>
+          We are committed to constantly refining our audio tools. If you have feature requests, notice a bug, or have ideas for new music production calculators, we would love to hear from you.
+        </p>
+        <div class="mt-4 flex flex-wrap items-center gap-3 not-prose">
+          <a href="/contact/" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-neutral-900 dark:bg-neutral-100 text-white dark:text-black font-semibold text-sm hover:opacity-90 transition-opacity">
+            <span>Send Us a Message</span>
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </a>
+          <a href="/" class="px-4 py-2.5 rounded-xl border border-neutral-200 dark:border-neutral-800 text-neutral-700 dark:text-neutral-300 text-sm font-medium hover:bg-neutral-100 dark:hover:bg-neutral-900 transition-colors">
+            Try the Tap Tempo Tool
+          </a>
+        </div>
+      </div>
+
+    </article>
   </div>
 </Layout>
+
+<!-- JSON-LD AboutPage Schema -->
+<script type="application/ld+json" set:html={JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "AboutPage",
+  "name": "About Us - ttaptempo.com",
+  "url": "https://ttaptempo.com/about/",
+  "description": "Learn about ttaptempo.com, our mission to build fast, free, client-side audio utilities with zero sign-ups and zero data tracking.",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Tap Tempo",
+    "url": "https://ttaptempo.com/"
+  }
+})} />
