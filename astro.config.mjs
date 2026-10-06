@@ -7,6 +7,13 @@ import sitemap from '@astrojs/sitemap';
 export default defineConfig({
   site: 'https://ttaptempo.com',
   trailingSlash: 'always',
+  i18n: {
+    defaultLocale: 'en',
+    locales: ['en', 'es', 'ja', 'fr', 'de', 'pt', 'ko', 'it'],
+    routing: {
+      prefixDefaultLocale: false,
+    },
+  },
   integrations: [
     sitemap({
       changefreq: 'weekly',
@@ -19,4 +26,3 @@ export default defineConfig({
     plugins: [tailwindcss()],
   },
 });
-

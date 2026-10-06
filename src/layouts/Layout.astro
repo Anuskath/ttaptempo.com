@@ -1,6 +1,7 @@
 ---
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import { getHreflangList, LANGUAGES } from '../i18n/languages';
 import '../styles/global.css';
 
 interface Props {
@@ -9,6 +10,7 @@ interface Props {
   keywords?: string;
   canonicalPath?: string;
   noindex?: boolean;
+  lang?: string;
 }
 
 const {
@@ -17,13 +19,16 @@ const {
   keywords = 'tap tempo, bpm counter, tap for bpm, online metronome, tap bpm tool, tempo finder, beats per minute calculator, delay sync calculator',
   canonicalPath = '/',
   noindex = false,
+  lang = 'en',
 } = Astro.props;
 
 const canonicalUrl = new URL(canonicalPath, 'https://ttaptempo.com').href;
+const hreflangLinks = getHreflangList(canonicalPath);
+const currentLocale = LANGUAGES[lang]?.locale || 'en_US';
 ---
 
 <!doctype html>
-<html lang="en" class="scroll-smooth">
+<html lang={lang} class="scroll-smooth">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
@@ -38,12 +43,18 @@ const canonicalUrl = new URL(canonicalPath, 'https://ttaptempo.com').href;
     <meta name="robots" content={noindex ? "noindex, follow" : "index, follow"} />
     <link rel="canonical" href={canonicalUrl} />
 
+    <!-- Multilingual Hreflang SEO Alternate Links -->
+    {hreflangLinks.map(link => (
+      <link rel="alternate" hreflang={link.lang} href={link.url} />
+    ))}
+
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content={canonicalUrl} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:site_name" content="Tap Tempo" />
+    <meta property="og:locale" content={currentLocale} />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
@@ -63,10 +74,10 @@ const canonicalUrl = new URL(canonicalPath, 'https://ttaptempo.com').href;
     </script>
   </head>
   <body class="min-h-screen flex flex-col bg-white dark:bg-black text-neutral-900 dark:text-neutral-50 transition-colors duration-200">
-    <Header />
+    <Header lang={lang} />
     <main class="flex-1 w-full">
       <slot />
     </main>
-    <Footer />
+    <Footer lang={lang} />
   </body>
 </html>

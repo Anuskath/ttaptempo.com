@@ -1,4 +1,12 @@
 ---
+import { TRANSLATIONS } from '../i18n/translations';
+
+interface Props {
+  lang?: string;
+}
+
+const { lang = 'en' } = Astro.props;
+const t = TRANSLATIONS[lang]?.ui || TRANSLATIONS.en.ui;
 ---
 
 <section id="metronome" class="relative w-full py-12 px-4 border-t border-neutral-200 dark:border-neutral-800 bg-neutral-50/50 dark:bg-neutral-950/40">
@@ -12,15 +20,15 @@
           <span>Synthesized Web Audio</span>
         </div>
         <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-neutral-900 dark:text-neutral-100">
-          Hear Your BPM (Interactive Metronome)
+          {t.metronomeTitle}
         </h2>
         <p class="text-sm text-neutral-600 dark:text-neutral-400 mt-1">
-          Play back your detected tempo or practice with customizable studio sounds, time signatures, and visual beat tracking.
+          {t.metronomeSubtitle}
         </p>
       </div>
 
       <!-- Quick Status -->
-      <div id="metronome-status-badge" class="inline-flex items-center gap-2 text-xs font-mono px-3 py-1.5 rounded-lg bg-neutral-200/70 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300 self-start sm:self-auto">
+      <div id="metronome-status-badge" class="inline-flex items-center gap-2 text-xs font-mono px-3 py-1.5 rounded-lg bg-neutral-200/70 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300 self-start sm:self-auto" data-play-text={t.play} data-stop-text={t.stop}>
         <span class="w-2 h-2 rounded-full bg-neutral-400"></span>
         <span>Stopped</span>
       </div>

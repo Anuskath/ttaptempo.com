@@ -1,0 +1,35 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import TapPad from '../../components/TapPad.astro';
+import AudioMetronome from '../../components/AudioMetronome.astro';
+import DelayCalculator from '../../components/DelayCalculator.astro';
+import TempoReferenceGuide from '../../components/TempoReferenceGuide.astro';
+import HomeSeoArticle from '../../components/HomeSeoArticle.astro';
+import { NON_DEFAULT_LANG_CODES, LANGUAGES } from '../../i18n/languages';
+import { TRANSLATIONS } from '../../i18n/translations';
+
+export function getStaticPaths() {
+  return NON_DEFAULT_LANG_CODES.map((lang) => ({
+    params: { lang },
+  }));
+}
+
+const { lang } = Astro.params;
+const langCode = lang as string;
+const currentLang = LANGUAGES[langCode] || LANGUAGES.en;
+const data = TRANSLATIONS[langCode] || TRANSLATIONS.en;
+---
+
+<Layout
+  title={data.meta.title}
+  description={data.meta.description}
+  keywords={data.meta.keywords}
+  canonicalPath={`/${langCode}/`}
+  lang={langCode}
+>
+  <TapPad lang={langCode} />
+  <AudioMetronome lang={langCode} />
+  <DelayCalculator lang={langCode} />
+  <TempoReferenceGuide lang={langCode} />
+  <HomeSeoArticle lang={langCode} />
+</Layout>

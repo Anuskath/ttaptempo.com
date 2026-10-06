@@ -1,4 +1,11 @@
 ---
+import { LANGUAGES, SUPPORTED_LANG_CODES } from '../i18n/languages';
+
+interface Props {
+  lang?: string;
+}
+
+const { lang = 'en' } = Astro.props;
 ---
 
 <footer class="w-full border-t border-neutral-200 dark:border-neutral-800 bg-white dark:bg-black text-neutral-600 dark:text-neutral-400 py-12 px-4 transition-colors">
@@ -55,6 +62,30 @@
         </ul>
       </div>
 
+    </div>
+
+    <!-- Languages Directory in Footer (SEO Internal Link Juice) -->
+    <div class="pt-6 pb-6 border-t border-neutral-100 dark:border-neutral-900">
+      <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs">
+        <span class="font-mono text-[11px] uppercase tracking-wider text-neutral-400">Languages:</span>
+        <div class="flex flex-wrap items-center gap-3 text-neutral-600 dark:text-neutral-400">
+          {SUPPORTED_LANG_CODES.map((code) => {
+            const l = LANGUAGES[code];
+            const isSelected = code === lang;
+            return (
+              <a
+                href={l.path}
+                class={`hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors inline-flex items-center gap-1 ${
+                  isSelected ? 'font-bold text-neutral-950 dark:text-neutral-50 underline underline-offset-4' : ''
+                }`}
+              >
+                <span>{l.flag}</span>
+                <span>{l.nativeName}</span>
+              </a>
+            );
+          })}
+        </div>
+      </div>
     </div>
 
     <!-- Bottom Bar -->

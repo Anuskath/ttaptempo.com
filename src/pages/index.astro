@@ -5,18 +5,21 @@ import AudioMetronome from '../components/AudioMetronome.astro';
 import DelayCalculator from '../components/DelayCalculator.astro';
 import TempoReferenceGuide from '../components/TempoReferenceGuide.astro';
 import HomeSeoArticle from '../components/HomeSeoArticle.astro';
+import { TRANSLATIONS } from '../i18n/translations';
+
+const en = TRANSLATIONS.en;
 ---
 
 <Layout
-  title="Tap Tempo - Free BPM Counter, BPM Tapper & Metronome | ttaptempo.com"
-  description="Free online tap tempo and bpm counter. Tap any key to calculate bpm tap tempo, listen with tap tempo metronome, and calculate delay pedal with tap tempo timings."
-  keywords="tap tempo, bpm tapper, tempo tap, bpm tap, bpm counter, tap tempo online, tap tempo metronome, tap tempo bpm, metronome tap tempo, bpm tap tempo, online tap tempo, delay pedal with tap tempo"
+  title={en.meta.title}
+  description={en.meta.description}
+  keywords={en.meta.keywords}
   canonicalPath="/"
+  lang="en"
 >
-  <TapPad />
-  <AudioMetronome />
-  <DelayCalculator />
-  <TempoReferenceGuide />
-  <HomeSeoArticle />
+  <TapPad lang="en" />
+  <AudioMetronome lang="en" />
+  <DelayCalculator lang="en" />
+  <TempoReferenceGuide lang="en" />
+  <HomeSeoArticle lang="en" />
 </Layout>
-

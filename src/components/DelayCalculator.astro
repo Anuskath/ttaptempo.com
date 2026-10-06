@@ -1,4 +1,12 @@
 ---
+import { TRANSLATIONS } from '../i18n/translations';
+
+interface Props {
+  lang?: string;
+}
+
+const { lang = 'en' } = Astro.props;
+const t = TRANSLATIONS[lang]?.ui || TRANSLATIONS.en.ui;
 ---
 
 <section id="delay-table" class="relative w-full py-12 px-4 border-t border-neutral-200 dark:border-neutral-800">
@@ -7,21 +15,19 @@
     <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-6">
       <div>
         <div class="inline-flex items-center gap-2 px-2.5 py-0.5 rounded-full border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 text-xs font-mono font-medium text-neutral-600 dark:text-neutral-400 mb-2">
-          <span>DAW &amp; Studio Sync</span>
-          <span>•</span>
-          <span>FL Studio / Ableton / Logic</span>
+          <span>{t.delayBadge}</span>
         </div>
         <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-neutral-900 dark:text-neutral-100">
-          Delay &amp; Reverb Time Calculator (ms)
+          {t.delayTitle}
         </h2>
         <p class="text-sm text-neutral-600 dark:text-neutral-400 mt-1">
-          Synchronize your audio plugin pre-delays, echoes, and LFO modulation times to the exact tempo. Click any value to copy.
+          {t.delaySubtitle}
         </p>
       </div>
 
       <!-- Current Sync BPM Readout -->
       <div class="flex items-center gap-2 text-xs font-mono px-3 py-1.5 rounded-lg border border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-950">
-        <span class="text-neutral-500">Syncing at:</span>
+        <span class="text-neutral-500">{t.delaySyncingAt}</span>
         <span id="delay-sync-bpm" class="font-bold text-neutral-900 dark:text-neutral-100">120 BPM</span>
       </div>
     </div>
@@ -32,11 +38,11 @@
         <table class="w-full text-left border-collapse text-xs sm:text-sm">
           <thead>
             <tr class="border-b border-neutral-200 dark:border-neutral-800 bg-neutral-50/70 dark:bg-neutral-900/50 text-neutral-600 dark:text-neutral-400 font-semibold">
-              <th class="py-3 px-4 sm:px-6">Note Value</th>
-              <th class="py-3 px-4 sm:px-6">Normal (ms)</th>
-              <th class="py-3 px-4 sm:px-6">Dotted (ms)</th>
-              <th class="py-3 px-4 sm:px-6">Triplet (ms)</th>
-              <th class="py-3 px-4 sm:px-6">Frequency (Hz)</th>
+              <th class="py-3 px-4 sm:px-6">{t.noteValue}</th>
+              <th class="py-3 px-4 sm:px-6">{t.normalMs}</th>
+              <th class="py-3 px-4 sm:px-6">{t.dottedMs}</th>
+              <th class="py-3 px-4 sm:px-6">{t.tripletMs}</th>
+              <th class="py-3 px-4 sm:px-6">{t.frequencyHz}</th>
             </tr>
           </thead>
           <tbody id="delay-tbody" class="divide-y divide-neutral-100 dark:divide-neutral-900 font-mono text-neutral-800 dark:text-neutral-200">

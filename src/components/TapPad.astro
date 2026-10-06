@@ -1,4 +1,12 @@
 ---
+import { TRANSLATIONS } from '../i18n/translations';
+
+interface Props {
+  lang?: string;
+}
+
+const { lang = 'en' } = Astro.props;
+const t = TRANSLATIONS[lang]?.ui || TRANSLATIONS.en.ui;
 ---
 
 <section id="tap-tool" class="relative w-full pt-8 pb-12 sm:pt-12 sm:pb-16 px-4 aurora-mesh-light">
@@ -7,13 +15,13 @@
     <div class="text-center mb-8">
       <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-neutral-200 dark:border-neutral-800 bg-white/80 dark:bg-neutral-900/80 backdrop-blur-xs text-xs font-mono font-medium text-neutral-600 dark:text-neutral-400 mb-4 shadow-xs">
         <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-        Sub-millisecond Precision • No Signup Required
+        {t.heroBadge}
       </div>
       <h1 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-neutral-900 dark:text-neutral-50 mb-3">
-        Online <span class="rainbow-gradient-text">Tap Tempo</span> &amp; BPM Counter
+        {t.heroTitlePrefix} <span class="rainbow-gradient-text">{t.heroTitleGradient}</span> &amp; BPM Counter
       </h1>
       <p class="text-base sm:text-lg text-neutral-600 dark:text-neutral-400 max-w-2xl mx-auto">
-        Tap along to any song, beat, or metronome to measure exact Beats Per Minute. Features instant audio playback, delay &amp; reverb sync, and classical tempo markings.
+        {t.heroSubtitle}
       </p>
     </div>
 
@@ -26,7 +34,7 @@
         <!-- Classical Italian Marking & Genre Badges -->
         <div class="flex flex-wrap items-center justify-center gap-2 mb-3">
           <span id="tempo-marking-badge" class="px-3.5 py-1 rounded-full text-xs font-semibold tracking-wide bg-neutral-100 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300 transition-colors border border-neutral-200/60 dark:border-neutral-700/60">
-            Tap to measure tempo
+            {t.tapInitial}
           </span>
           <span id="genre-badge" class="hidden px-3.5 py-1 rounded-full text-xs font-medium bg-blue-50 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400 border border-blue-200 dark:border-blue-900/50">
             <!-- Dynamic Genre -->
@@ -44,9 +52,9 @@
         </div>
 
         <!-- Consistency Quality Bar -->
-        <div id="consistency-container" class="mt-2 flex items-center gap-2 text-xs font-mono text-neutral-500 opacity-0 transition-opacity duration-200">
+        <div id="consistency-container" class="mt-2 flex items-center gap-2 text-xs font-mono text-neutral-500 opacity-0 transition-opacity duration-200" data-steady={t.steady}>
           <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
-          <span id="consistency-text">100% Steady</span>
+          <span id="consistency-text">100% {t.steady}</span>
         </div>
       </div>
 
@@ -70,15 +78,15 @@
           </div>
 
           <span class="font-extrabold text-lg sm:text-xl tracking-tight text-neutral-900 dark:text-neutral-100 uppercase">
-            TAP HERE OR PRESS SPACEBAR
+            {t.tapButtonMain}
           </span>
           <span class="text-xs sm:text-sm text-neutral-500 dark:text-neutral-400 mt-1 font-medium">
-            Tap steadily to the rhythm of any song or beat
+            {t.tapButtonSub}
           </span>
 
           <!-- Keyboard helper badge -->
           <div class="hidden sm:inline-flex items-center gap-1.5 mt-4 px-2.5 py-1 rounded bg-neutral-200/60 dark:bg-neutral-800/80 text-[11px] font-mono text-neutral-600 dark:text-neutral-400">
-            <span>Any Key to Tap</span>
+            <span>{t.helperBadge}</span>
             <span>•</span>
             <kbd class="px-1 py-0.5 rounded bg-white dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-700 shadow-xs">R</kbd>
           </div>
@@ -91,7 +99,7 @@
         
         <!-- Nudge Controls -->
         <div class="flex items-center gap-1.5">
-          <span class="text-xs text-neutral-500 font-medium mr-1 hidden sm:inline">Nudge:</span>
+          <span class="text-xs text-neutral-500 font-medium mr-1 hidden sm:inline">{t.nudgeLabel}</span>
           <button id="nudge-minus-5" type="button" class="px-2.5 py-1.5 rounded-lg border border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-900 hover:bg-neutral-100 dark:hover:bg-neutral-800 text-xs font-mono font-medium text-neutral-700 dark:text-neutral-300 transition-colors cursor-pointer" title="Decrease 5 BPM">-5</button>
           <button id="nudge-minus-1" type="button" class="px-2.5 py-1.5 rounded-lg border border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-900 hover:bg-neutral-100 dark:hover:bg-neutral-800 text-xs font-mono font-medium text-neutral-700 dark:text-neutral-300 transition-colors cursor-pointer" title="Decrease 1 BPM">-1</button>
           <button id="nudge-plus-1" type="button" class="px-2.5 py-1.5 rounded-lg border border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-900 hover:bg-neutral-100 dark:hover:bg-neutral-800 text-xs font-mono font-medium text-neutral-700 dark:text-neutral-300 transition-colors cursor-pointer" title="Increase 1 BPM">+1</button>
@@ -123,7 +131,7 @@
               <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path>
               <path d="M3 3v5h5"></path>
             </svg>
-            <span>Reset (R)</span>
+            <span>{t.resetLabel} (R)</span>
           </button>
         </div>
       </div>
@@ -154,7 +162,7 @@
     <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 mt-6">
       
       <div class="p-4 rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950">
-        <span class="text-xs font-medium text-neutral-500 dark:text-neutral-400 block mb-1">Beat Interval</span>
+        <span class="text-xs font-medium text-neutral-500 dark:text-neutral-400 block mb-1">{t.statsInterval}</span>
         <div class="flex items-baseline gap-1">
           <span id="stat-interval" class="font-mono text-xl sm:text-2xl font-bold text-neutral-900 dark:text-neutral-100">0</span>
           <span class="text-xs font-mono text-neutral-500">ms</span>
@@ -162,7 +170,7 @@
       </div>
 
       <div class="p-4 rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950">
-        <span class="text-xs font-medium text-neutral-500 dark:text-neutral-400 block mb-1">Frequency</span>
+        <span class="text-xs font-medium text-neutral-500 dark:text-neutral-400 block mb-1">{t.statsFrequency}</span>
         <div class="flex items-baseline gap-1">
           <span id="stat-hz" class="font-mono text-xl sm:text-2xl font-bold text-neutral-900 dark:text-neutral-100">0</span>
           <span class="text-xs font-mono text-neutral-500">Hz</span>
@@ -170,7 +178,7 @@
       </div>
 
       <div class="p-4 rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950">
-        <span class="text-xs font-medium text-neutral-500 dark:text-neutral-400 block mb-1">Timing Taps</span>
+        <span class="text-xs font-medium text-neutral-500 dark:text-neutral-400 block mb-1">{t.statsTaps}</span>
         <div class="flex items-baseline gap-1">
           <span id="stat-taps" class="font-mono text-xl sm:text-2xl font-bold text-neutral-900 dark:text-neutral-100">0</span>
           <span class="text-xs font-mono text-neutral-500">beats</span>
@@ -178,7 +186,7 @@
       </div>
 
       <div class="p-4 rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950">
-        <span class="text-xs font-medium text-neutral-500 dark:text-neutral-400 block mb-1">Session Elapsed</span>
+        <span class="text-xs font-medium text-neutral-500 dark:text-neutral-400 block mb-1">{t.statsConsistency}</span>
         <div class="flex items-baseline gap-1">
           <span id="stat-elapsed" class="font-mono text-xl sm:text-2xl font-bold text-neutral-900 dark:text-neutral-100">0.0</span>
           <span class="text-xs font-mono text-neutral-500">sec</span>

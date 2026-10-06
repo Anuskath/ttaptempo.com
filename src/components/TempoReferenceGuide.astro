@@ -1,5 +1,13 @@
 ---
 import { TEMPO_MARKINGS, GENRE_BPMS } from '../data/tempoData';
+import { TRANSLATIONS } from '../i18n/translations';
+
+interface Props {
+  lang?: string;
+}
+
+const { lang = 'en' } = Astro.props;
+const t = TRANSLATIONS[lang]?.ui || TRANSLATIONS.en.ui;
 ---
 
 <section id="tempo-guide" class="relative w-full py-12 px-4 border-t border-neutral-200 dark:border-neutral-800 bg-neutral-50/50 dark:bg-neutral-950/40">
@@ -7,15 +15,13 @@ import { TEMPO_MARKINGS, GENRE_BPMS } from '../data/tempoData';
     
     <div class="mb-8">
       <div class="inline-flex items-center gap-2 px-2.5 py-0.5 rounded-full border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 text-xs font-mono font-medium text-neutral-600 dark:text-neutral-400 mb-2">
-        <span>Music Theory Reference</span>
-        <span>•</span>
-        <span>Standard Speed Markings</span>
+        <span>{t.tempoGuideBadge}</span>
       </div>
       <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-neutral-900 dark:text-neutral-100">
-        Musical Tempo Markings &amp; Genre BPM Guide
+        {t.tempoGuideTitle}
       </h2>
       <p class="text-sm text-neutral-600 dark:text-neutral-400 mt-1">
-        Learn classical Italian tempo speeds and standard modern music production genre BPM ranges. Click any row to load that tempo into the tool.
+        {t.tempoGuideSubtitle}
       </p>
     </div>
 

@@ -1,5 +1,95 @@
 ---
 import { FAQS } from '../data/faqs';
+import { TRANSLATIONS } from '../i18n/translations';
+
+interface Props {
+  lang?: string;
+}
+
+const { lang = 'en' } = Astro.props;
+const data = TRANSLATIONS[lang] || TRANSLATIONS.en;
+const art = data.article || TRANSLATIONS.en.article;
+const faqs = (data.faqs && data.faqs.length > 0) ? data.faqs : FAQS;
+const canonicalUrl = lang === 'en' ? 'https://ttaptempo.com/' : `https://ttaptempo.com/${lang}/`;
+
+// FAQ heading and subtitle localization
+const faqHeading = lang === 'es' ? 'Preguntas Frecuentes sobre Tap Tempo y BPM' :
+  lang === 'pt' ? 'Perguntas Frequentes sobre Tap Tempo e BPM' :
+  lang === 'ja' ? 'タップテンポとBPMに関するよくある質問' :
+  lang === 'de' ? 'Häufig gestellte Fragen zu Tap Tempo & BPM' :
+  lang === 'fr' ? 'Foire Aux Questions sur le Tap Tempo & BPM' :
+  lang === 'ko' ? '탭 템포 및 BPM 자주 묻는 질문' :
+  lang === 'it' ? 'Domande Frequenti su Tap Tempo e BPM' :
+  'Everything You Need to Know About Tap Tempo & BPM';
+
+const faqSubtitle = lang === 'es' ? 'Respuestas detalladas sobre cálculo de tempo, marcas italianas, pedales de delay y producción musical en DAW.' :
+  lang === 'pt' ? 'Respostas detalhadas sobre cálculo de andamento, marcas italianas, pedais de delay e produção musical.' :
+  lang === 'ja' ? 'テンポの計算方法、イタリア語速度標語、ディレイ同期、DAWでの活用に関する技術解説。' :
+  lang === 'de' ? 'Detaillierte Antworten zu Tempoberechnung, italienischen Tempobezeichnungen, Delay-Pedalen und DAW-Workflows.' :
+  lang === 'fr' ? 'Réponses techniques détaillées sur le calcul du tempo, les termes italiens, la synchronisation delay et les DAW.' :
+  lang === 'ko' ? '템포 계산 알고리즘, 이탈리아어 템포 기호, 딜레이 페달 동기화 및 DAW 활용법에 관한 상세 안내.' :
+  lang === 'it' ? 'Risposte tecniche approfondite su calcolo del tempo, andamenti italiani, pedali delay e workflow DAW.' :
+  'In-depth technical answers regarding tempo calculation, classical Italian markings, delay pedal synchronization, and digital audio workstation workflows.';
+
+const whyChooseTitle = lang === 'es' ? '¿Por qué Elegir ttaptempo.com?' :
+  lang === 'pt' ? 'Por que Escolher o ttaptempo.com?' :
+  lang === 'ja' ? 'ttaptempo.com が選ばれる理由' :
+  lang === 'de' ? 'Warum ttaptempo.com wählen?' :
+  lang === 'fr' ? 'Pourquoi Choisir ttaptempo.com ?' :
+  lang === 'ko' ? 'ttaptempo.com을 선택해야 하는 이유' :
+  lang === 'it' ? 'Perché Scegliere ttaptempo.com?' :
+  'Why Choose ttaptempo.com Over Other Tools?';
+
+const whyChooseIntro = lang === 'es' ? 'A diferencia de herramientas obsoletas o sitios repletos de publicidad invasiva, ttaptempo.com ofrece una experiencia moderna, ultrarrápida y profesional:' :
+  lang === 'pt' ? 'Diferente de sites antigos ou plataformas cheias de anúncios intrusivos, o ttaptempo.com entrega uma experiência moderna, ultra rápida e profissional:' :
+  lang === 'ja' ? '広告や登録を強制する古いツールとは異なり、ttaptempo.com はミュージシャンやクリエイター向けに最速で快適な体験を提供します：' :
+  lang === 'de' ? 'Im Gegensatz zu veralteten Websites mit störender Werbung bietet ttaptempo.com ein modernes, schnelles und werbefreies Erlebnis auf Studio-Niveau:' :
+  lang === 'fr' ? 'Contrairement aux outils obsolètes remplis de publicités intrusives, ttaptempo.com offre une expérience moderne, fluide et professionnelle :' :
+  lang === 'ko' ? '광고로 가득 찬 구형 웹사이트들과 달리, ttaptempo.com은 최신 웹 기술 기반으로 빠르고 직관적인 스튜디오급 환경을 제공합니다:' :
+  lang === 'it' ? 'A differenza dei vecchi siti pieni di banner pubblicitari, ttaptempo.com offre un\'esperienza moderna, ultraveloce e di livello professionale:' :
+  'Unlike legacy tools built decades ago or modern corporate sites cluttered with intrusive advertising and mandatory signups, ttaptempo.com delivers a streamlined, developer-grade experience built on modern web standards:';
+
+const whyChoosePoints = lang === 'es' ? [
+  { title: '100% Gratis y Sin Registro:', desc: 'Sin pagos ocultos, sin barreras de inicio de sesión y con uso completamente ilimitado.' },
+  { title: 'Cero Latencia en el Navegador:', desc: 'Creado con Astro y Tailwind CSS v4 para cargar en menos de 100 ms a nivel global.' },
+  { title: 'Optimizado para Móviles con Háptica:', desc: 'Vibración táctil realista al pulsar en iOS o Android.' },
+  { title: 'Privacidad Garantizada:', desc: 'Sin micrófonos ni rastreadores: tus datos se procesan exclusivamente en tu dispositivo.' }
+] : lang === 'pt' ? [
+  { title: '100% Gratuito e Sem Registro:', desc: 'Sem planos pagos, sem necessidade de login e sem limites de uso.' },
+  { title: 'Zero Latência no Navegador:', desc: 'Desenvolvido com Astro e Tailwind CSS v4 para carregar em menos de 100 ms globalmente.' },
+  { title: 'Experiência Móvel com Resposta Tátil:', desc: 'Vibração tátil ao tocar no iOS ou Android.' },
+  { title: 'Privacidade Total:', desc: 'Sem necessidade de microfone ou cookies rastreadores: processamento 100% local.' }
+] : lang === 'ja' ? [
+  { title: '完全無料・登録不要:', desc: '有料プランやログインは一切不要。すべての機能を無制限に利用可能。' },
+  { title: '超低レイテンシー:', desc: 'AstroとTailwind CSS v4による軽量設計で世界中どこからでも100ms未満で高速読み込み。' },
+  { title: 'モバイル対応・触覚フィードバック:', desc: 'スマホタップ時にリアルな振動フィードバックを提供（iOS/Android対応）。' },
+  { title: 'プライバシー保護:', desc: 'マイク録音やトラッキングクッキーなし。ブラウザ内で完全に処理。' }
+] : lang === 'de' ? [
+  { title: '100% Kostenlos & Ohne Anmeldung:', desc: 'Keine Abonnements, keine Registrierungspflicht, unbegrenzte Nutzung.' },
+  { title: 'Null Audio-Latenz:', desc: 'Entwickelt mit Astro und Tailwind CSS v4, lädt weltweit in unter 100 ms.' },
+  { title: 'Mobiloptimiert mit Haptik:', desc: 'Realistisches taktiles Vibrationsfeedback beim Tippen auf Smartphones.' },
+  { title: 'Datenschutz Garantiert:', desc: 'Kein Mikrofonzugriff, keine Tracking-Cookies – 100% lokale Berechnung.' }
+] : lang === 'fr' ? [
+  { title: '100% Gratuit et Sans Inscription:', desc: 'Aucun abonnement, aucune connexion requise et utilisation illimitée.' },
+  { title: 'Zéro Latence Côté Client:', desc: 'Propulsé par Astro et Tailwind CSS v4, se charge en moins de 100 ms dans le monde entier.' },
+  { title: 'Mobile First avec Retour Haptique:', desc: 'Vibration tactile réaliste lors des frappes sur iOS et Android.' },
+  { title: 'Confidentialité Garantie:', desc: 'Aucun accès micro ni cookie de suivi requis : traitement 100% local.' }
+] : lang === 'ko' ? [
+  { title: '100% 무료 및 회원가입 없음:', desc: '유료 구독이나 로그인 절차 없이 모든 기능을 무제한으로 사용하세요.' },
+  { title: '제로 레이턴시 클라이언트 구조:', desc: 'Astro와 Tailwind CSS v4 기반으로 전 세계 어디서든 100ms 미만 초고속 로딩.' },
+  { title: '햅틱 진동 피드백 모바일 지원:', desc: '스마트폰 화면을 탭할 때 실감 나는 물리적 진동 반응 지원.' },
+  { title: '완벽한 개인정보 보호:', desc: '마이크 녹음이나 추적 쿠키 없이 기기 내에서 100% 로컬 연산.' }
+] : lang === 'it' ? [
+  { title: '100% Gratuito e Senza Registrazione:', desc: 'Nessun abbonamento a pagamento, nessun login richiesto e utilizzo senza limiti.' },
+  { title: 'Zero Latenza:', desc: 'Realizzato con Astro e Tailwind CSS v4, tempi di caricamento inferiori a 100 ms.' },
+  { title: 'Mobile First con Feedback Aptico:', desc: 'Vibrazione tattile realistica quando tocchi lo schermo su iOS o Android.' },
+  { title: 'Privacy Garantita:', desc: 'Nessun ascolto da microfono né cookie di tracciamento: elaborazione locale al 100%.' }
+] : [
+  { title: '100% Free & Unrestricted:', desc: 'No subscription paywalls, no login barriers, and no trial limits.' },
+  { title: 'Zero Latency Client-Side Architecture:', desc: 'Powered by Astro and Tailwind CSS v4, loading in under 100ms globally.' },
+  { title: 'Mobile First with Tactile Haptics:', desc: 'Enjoy realistic drum-pad physical vibration feedback when tapping on iOS or Android.' },
+  { title: 'Privacy Guaranteed:', desc: 'No microphone listening or tracking cookies required—your timing data remains strictly on your device.' }
+];
 ---
 
 <section id="guide" class="relative w-full py-16 px-4 border-t border-neutral-200 dark:border-neutral-800 bg-white dark:bg-black">
@@ -11,39 +101,31 @@ import { FAQS } from '../data/faqs';
       <!-- Section 1: Introduction & Main Keyword -->
       <div>
         <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-900 text-xs font-mono text-neutral-600 dark:text-neutral-400 mb-3">
-          <span>Comprehensive Technical Guide</span>
+          <span>{art.badge}</span>
         </div>
         <h2 class="text-2xl sm:text-4xl font-extrabold tracking-tight text-neutral-900 dark:text-neutral-50 mb-4">
-          Tap Tempo &amp; BPM Counter: The Complete Guide to Accurate Rhythm Timing
+          {art.h1}
         </h2>
-        <p>
-          Whether you are an electronic music producer adjusting groove swing in your digital audio workstation, a performing DJ synchronizing tracks on CDJs, a guitarist dialing in a <strong>delay pedal with tap tempo</strong>, or a live drummer locked into a stage click track, knowing your exact musical speed is non-negotiable. Our free <strong>online tap tempo</strong> utility is designed to eliminate guesswork by providing an instant, studio-grade <strong>bpm tapper</strong> and <strong>bpm counter</strong> accessible directly in your web browser with zero latency.
-        </p>
-        <p>
-          A traditional physical metronome requires manual dial turning, but modern music production frequently requires discovering the unknown tempo of an existing recording or live performance. By simply using our <strong>tap tempo online</strong> interface—tapping your keyboard spacebar, mouse, or smartphone screen along to the pulse of a song—you can calculate precise <strong>tap tempo bpm</strong> in just a few seconds.
-        </p>
+        <p>{art.p1}</p>
+        <p>{art.p2}</p>
       </div>
 
       <!-- Section 2: How It Works & Algorithm -->
       <div class="pt-4 border-t border-neutral-100 dark:border-neutral-900">
         <h3 class="text-xl sm:text-2xl font-bold text-neutral-900 dark:text-neutral-100 mb-3">
-          How the Online Tap Tempo Algorithm Calculates BPM
+          {art.h2Algorithm}
         </h3>
-        <p>
-          Musical tempo is defined as Beats Per Minute (BPM), representing the number of quarter-note pulses that occur in a 60-second window. When you perform a <strong>tempo tap</strong>, the browser's High Resolution Time API (<code class="font-mono text-xs">window.performance.now()</code>) captures the sub-millisecond timestamp of each strike.
-        </p>
-        <p>
-          Unlike primitive counters that merely measure the interval between two taps, our advanced <strong>bpm tap tempo</strong> engine implements a weighted moving average with human jitter compensation. Human fingers naturally possess a mechanical latency variance of 10 to 30 milliseconds. To counter this, our system analyzes the last 16 consecutive tap intervals, eliminates extreme statistical anomalies, and produces an ultra-stable, smooth readout.
-        </p>
+        <p>{art.pAlgorithm1}</p>
+        <p>{art.pAlgorithm2}</p>
         
         <!-- Formula Box -->
         <div class="p-5 my-4 rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-900/60 font-mono text-center not-prose">
-          <div class="text-xs uppercase tracking-wider text-neutral-500 mb-1">Standard Mathematical Formula</div>
+          <div class="text-xs uppercase tracking-wider text-neutral-500 mb-1">{art.formulaTitle}</div>
           <div class="text-base sm:text-lg font-bold text-neutral-900 dark:text-neutral-100">
-            BPM = 60,000 / Average Interval (ms)
+            {art.formulaText}
           </div>
           <div class="text-xs text-neutral-500 mt-1">
-            Example: A 500 ms interval = 60,000 / 500 = <span class="text-emerald-600 dark:text-emerald-400 font-bold">120 BPM</span>
+            {art.formulaExample}
           </div>
         </div>
       </div>
@@ -51,59 +133,43 @@ import { FAQS } from '../data/faqs';
       <!-- Section 3: Metronome Integration -->
       <div class="pt-4 border-t border-neutral-100 dark:border-neutral-900">
         <h3 class="text-xl sm:text-2xl font-bold text-neutral-900 dark:text-neutral-100 mb-3">
-          Synchronized Tap Tempo Metronome for Studio &amp; Stage
+          {art.h2Metronome}
         </h3>
-        <p>
-          A frequent flaw in most online tools is that once you measure a speed, you have no way to verify whether your calculated tempo truly matches the music. Our integrated <strong>tap tempo metronome</strong> bridges this gap by offering immediate, drift-free audio playback.
-        </p>
-        <p>
-          With a single tap of your Enter key or the "Play Beat" button, our Web Audio synthesizer generates high-precision acoustic woodblocks, studio hi-hats, 808 kicks, or digital clicks. You can set time signatures including 4/4 common time, 3/4 waltz, 2/4 march, or 6/8 compound time, featuring an unmistakable downbeat accent. This makes the <strong>metronome tap tempo</strong> functionality an invaluable daily practice companion for pianists, drummers, and violinists training their internal clock.
-        </p>
+        <p>{art.pMetronome}</p>
       </div>
 
       <!-- Section 4: Delay Pedal with Tap Tempo & DAW Sync -->
       <div class="pt-4 border-t border-neutral-100 dark:border-neutral-900">
         <h3 class="text-xl sm:text-2xl font-bold text-neutral-900 dark:text-neutral-100 mb-3">
-          Setting Up a Delay Pedal with Tap Tempo &amp; DAW Plugins
+          {art.h2Delay}
         </h3>
-        <p>
-          Guitarists frequently rely on a <strong>delay pedal with tap tempo</strong> (such as the Boss DD-8, Strymon Timeline, TC Electronic Flashback, or Line 6 DL4) to lock rhythmic repeats to the drummer's groove. However, in recording studios and home production setups utilizing Ableton Live, FL Studio, Logic Pro, or Pro Tools, setting hardware delay units and analog rack gear requires knowing the exact millisecond value.
-        </p>
-        <p>
-          When you use our <strong>bpm tap</strong> calculator, the synchronized delay table instantly converts your tempo into exact millisecond timings across every rhythmic division:
-        </p>
+        <p>{art.pDelay}</p>
         <ul class="list-disc pl-6 space-y-2">
-          <li><strong>Quarter Note (1/4):</strong> The fundamental heartbeat of the tempo (<code class="font-mono text-xs">60,000 / BPM</code>).</li>
-          <li><strong>Dotted Eighth Note (1/8d):</strong> The quintessential U2 / The Edge rhythmic echo trick, creating syncopated galloping bounces across the groove (<code class="font-mono text-xs">Quarter Note × 0.75</code>).</li>
-          <li><strong>Triplet Eighth Note (1/8t):</strong> Essential for swinging blues, reggae dub echoes, and hip-hop delays (<code class="font-mono text-xs">Quarter Note × 0.3333</code>).</li>
-          <li><strong>Sixteenth Note (1/16):</strong> Tight slapback delays for rockabilly vocals and funky rhythm guitar chops (<code class="font-mono text-xs">Quarter Note / 4</code>).</li>
+          {art.delayPoints && art.delayPoints.map(point => (
+            <li>{point}</li>
+          ))}
         </ul>
       </div>
 
       <!-- Section 5: Step-by-Step Tapping Guide -->
       <div class="pt-4 border-t border-neutral-100 dark:border-neutral-900">
         <h3 class="text-xl sm:text-2xl font-bold text-neutral-900 dark:text-neutral-100 mb-3">
-          Step-by-Step: How to Use the BPM Counter Like a Pro
+          {art.h2Steps}
         </h3>
-        <p>
-          Follow these practical steps to extract the exact speed of any song or musical passage using this <strong>bpm tapper</strong>:
-        </p>
         <ol class="list-decimal pl-6 space-y-2">
-          <li><strong>Identify the Main Beat:</strong> Listen closely for the kick drum, bassline, or snare. In popular western music, the snare drum usually lands squarely on beats 2 and 4.</li>
-          <li><strong>Start Tapping Consistently:</strong> Tap the large central pad using your mouse or phone screen, or press the Spacebar on your keyboard. Maintain an even, relaxed tapping motion.</li>
-          <li><strong>Tap for 8 to 16 Beats:</strong> While the <strong>bpm tap tempo</strong> calculator shows an initial reading after just 2 taps, sustaining 8 to 12 taps allows the rolling average to stabilize and eliminate finger latency.</li>
-          <li><strong>Verify with the Metronome:</strong> Press Enter to trigger the audio metronome. Listen to whether the synthesized click lines up seamlessly with the track you are analyzing.</li>
-          <li><strong>Copy and Apply:</strong> Use the 1-click "Copy BPM" button to paste the tempo into your DAW project settings or delay pedal display.</li>
+          {art.steps && art.steps.map(step => (
+            <li>{step}</li>
+          ))}
         </ol>
       </div>
 
       <!-- Section 6: Italian Tempo Markings Reference -->
       <div class="pt-4 border-t border-neutral-100 dark:border-neutral-900">
         <h3 class="text-xl sm:text-2xl font-bold text-neutral-900 dark:text-neutral-100 mb-3">
-          Understanding Classical Italian Tempo Markings
+          {data.ui.tempoGuideTitle || "Understanding Classical Italian Tempo Markings"}
         </h3>
         <p>
-          Classical composers used expressive Italian terms to designate musical pace centuries before digital metronomes were invented. Our tool dynamically categorizes every <strong>tap tempo</strong> measurement into its historical classification:
+          {data.ui.tempoGuideSubtitle || "Classical composers used expressive Italian terms to designate musical pace centuries before digital metronomes were invented. Our tool dynamically categorizes every tap tempo measurement into its historical classification:"}
         </p>
         <ul class="list-disc pl-6 space-y-2">
           <li><strong>Grave (25–44 BPM):</strong> Slow, solemn, and weighty.</li>
@@ -174,16 +240,15 @@ import { FAQS } from '../data/faqs';
       <!-- Section 8: Why Choose ttaptempo.com -->
       <div class="pt-4 border-t border-neutral-100 dark:border-neutral-900">
         <h3 class="text-xl sm:text-2xl font-bold text-neutral-900 dark:text-neutral-100 mb-3">
-          Why Choose ttaptempo.com Over Other Tools?
+          {whyChooseTitle}
         </h3>
         <p>
-          Unlike legacy tools built decades ago or modern corporate sites cluttered with intrusive advertising and mandatory signups, <strong>ttaptempo.com</strong> delivers a streamlined, developer-grade experience built on modern web standards:
+          {whyChooseIntro}
         </p>
         <ul class="list-disc pl-6 space-y-2">
-          <li><strong>100% Free &amp; Unrestricted:</strong> No subscription paywalls, no login barriers, and no trial limits.</li>
-          <li><strong>Zero Latency Client-Side Architecture:</strong> Powered by Astro and Tailwind CSS v4, loading in under 100ms globally.</li>
-          <li><strong>Mobile First with Tactile Haptics:</strong> Enjoy realistic drum-pad physical vibration feedback when tapping on iOS or Android.</li>
-          <li><strong>Privacy Guaranteed:</strong> No microphone listening or tracking cookies required—your timing data remains strictly on your device.</li>
+          {whyChoosePoints.map(point => (
+            <li><strong>{point.title}</strong> {point.desc}</li>
+          ))}
         </ul>
       </div>
 
@@ -201,15 +266,15 @@ import { FAQS } from '../data/faqs';
           <span>Frequently Asked Questions</span>
         </div>
         <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight text-neutral-900 dark:text-neutral-100">
-          Everything You Need to Know About Tap Tempo &amp; BPM
+          {faqHeading}
         </h2>
         <p class="text-sm text-neutral-600 dark:text-neutral-400 mt-2 max-w-xl mx-auto">
-          In-depth technical answers regarding tempo calculation, classical Italian markings, delay pedal synchronization, and digital audio workstation workflows.
+          {faqSubtitle}
         </p>
       </div>
 
       <div class="space-y-3 max-w-3xl mx-auto">
-        {FAQS.map((faq, index) => (
+        {faqs.map((faq, index) => (
           <details class="group rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 p-4 sm:p-5 transition-all duration-200 hover:border-neutral-300 dark:hover:border-neutral-700 open:bg-neutral-50/70 dark:open:bg-neutral-900/90 open:border-neutral-300 dark:open:border-neutral-700">
             <summary class="flex items-start sm:items-center justify-between cursor-pointer list-none select-none min-h-[44px]">
               <div class="flex items-start sm:items-center gap-3 pr-2">
@@ -248,9 +313,10 @@ import { FAQS } from '../data/faqs';
 <script type="application/ld+json" set:html={JSON.stringify({
   "@context": "https://schema.org",
   "@type": "WebApplication",
-  "@id": "https://ttaptempo.com/#webapp",
-  "name": "Tap Tempo - Online BPM Counter & Metronome",
-  "url": "https://ttaptempo.com/",
+  "@id": `${canonicalUrl}#webapp`,
+  "name": data.meta?.title || "Tap Tempo - Online BPM Counter & Metronome",
+  "url": canonicalUrl,
+  "inLanguage": lang,
   "applicationCategory": "MusicApplication",
   "operatingSystem": "All (Web Browser, iOS, Android, macOS, Windows, Linux)",
   "offers": {
@@ -258,14 +324,14 @@ import { FAQS } from '../data/faqs';
     "price": "0",
     "priceCurrency": "USD"
   },
-  "description": "Free online tap tempo and BPM counter tool. Measure beats per minute by tapping any key, listen with zero-latency synthesized metronome, and calculate delay/reverb sync times in milliseconds."
+  "description": data.meta?.description || "Free online tap tempo and BPM counter tool."
 })} />
 
 <!-- Dedicated JSON-LD FAQPage Schema for Google SERP Rich Snippets Accordions -->
 <script type="application/ld+json" set:html={JSON.stringify({
   "@context": "https://schema.org",
   "@type": "FAQPage",
-  "mainEntity": FAQS.map(faq => ({
+  "mainEntity": faqs.map(faq => ({
     "@type": "Question",
     "name": faq.question,
     "acceptedAnswer": {
